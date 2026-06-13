@@ -109,3 +109,55 @@ def format_boundary_comparison_prompt(
         left_b=_snippet(left_b),
         right_b=_snippet(right_b),
     )
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Prompt de selección del mejor corte por lote (Batch)
+# ──────────────────────────────────────────────────────────────────────────────
+
+BEST_CUT_PROMPT = """\
+Eres un evaluador experto en segmentación temática de texto.
+Se te proporciona una secuencia de párrafos numerados del {start_idx} al {end_idx}.
+Tu tarea es decidir en cuál de los siguientes índices de corte (de {cut_min} a {cut_max}) ocurre el cambio de tema o transición más claro y natural.
+
+Nota importante: Un corte en el índice C significa que el párrafo C es el último párrafo del primer tema, y el párrafo C+1 es el primer párrafo del segundo tema.
+
+Secuencia de párrafos a evaluar:
+---
+{numbered_paragraphs}
+---
+
+Índices de corte candidatos: {cut_options}
+
+Responde ÚNICAMENTE con un objeto JSON estructurado exactamente así (sin texto adicional ni marcas de formato fuera del JSON):
+{{
+  "best_cut": <el índice del mejor corte (un número entero entre {cut_min} y {cut_max})>,
+  "razon": "<una frase breve explicando por qué este corte representa la transición de tema más natural>"
+}}
+"""
+
+
+def format_best_cut_prompt(problem, lo: int, hi: int, window_size: int) -> str:
+    """
+    Formatea el prompt para encontrar el mejor corte en la ventana.
+    """
+    end_idx = min(hi + window_size, problem.n - 1)
+    
+    # Construir párrafos numerados
+    paragraphs = []
+    for idx in range(lo, end_idx + 1):
+        paragraphs.append(f"PÁRRAFO {idx}: {problem.elements[idx].text}")
+    numbered_paragraphs = "\n\n".join(paragraphs)
+    
+    # Rango de cortes candidatos
+    cut_options = list(range(lo, hi + 1))
+    
+    return BEST_CUT_PROMPT.format(
+        start_idx=lo,
+        end_idx=end_idx,
+        cut_min=lo,
+        cut_max=hi,
+        numbered_paragraphs=numbered_paragraphs,
+        cut_options=str(cut_options)
+    )
+

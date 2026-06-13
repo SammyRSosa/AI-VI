@@ -107,13 +107,14 @@ def _refine_cut_with_llm(
     window_size: int,
     client: LLMClient,
     coh_matrix_cosine: list,
+    refinement_method: str = "batch",
 ) -> int:
     """
     Refina un corte ambiguo evaluando alternativas con el LLM.
 
-    Considera todos los cortes posibles en la ventana [cut-window, cut+window]
-    y elige el que maximiza:
-        coherencia_llm(segmento_izq) + coherencia_llm(segmento_der)
+    Considera todos los cortes posibles en la ventana [cut-window, cut+window].
+    Si refinement_method == "batch", realiza una sola llamada al LLM para elegir el mejor corte.
+    Si refinement_method == "pairwise", evalúa la coherencia de cada alternativa secuencialmente.
 
     Args:
         problem          : instancia del problema
@@ -121,6 +122,7 @@ def _refine_cut_with_llm(
         window_size      : tamaño de la ventana a cada lado
         client           : cliente LLM
         coh_matrix_cosine: matriz de coherencias coseno (como fallback)
+        refinement_method: "batch" (rápido, O(1)) o "pairwise" (lento, O(w))
 
     Returns:
         El mejor corte alternativo encontrado.
@@ -129,6 +131,12 @@ def _refine_cut_with_llm(
     lo = max(0, cut - window_size)
     hi = min(n - 2, cut + window_size)  # el corte no puede estar en n-1
 
+    if refinement_method == "batch":
+        # Selección rápida en lote (una sola llamada al LLM para toda la ventana)
+        best_cut, _ = client.ask_best_cut(problem, lo, hi, window_size)
+        return best_cut
+
+    # Método tradicional: pairwise (múltiples llamadas secuenciales)
     best_cut = cut
     best_score = float("-inf")
 
@@ -165,6 +173,7 @@ def _phase2(
     client: LLMClient,
     ambiguity_threshold: float,
     window_size: int,
+    refinement_method: str = "batch",
 ) -> Segmentation:
     """
     Ejecuta la fase 2: refinamiento de cortes ambiguos con LLM.
@@ -183,7 +192,7 @@ def _phase2(
     refined_cuts = list(cuts0)
     for c in ambiguous:
         new_c = _refine_cut_with_llm(
-            problem, c, window_size, client, coh_matrix_cosine
+            problem, c, window_size, client, coh_matrix_cosine, refinement_method
         )
         idx = refined_cuts.index(c)
         refined_cuts[idx] = new_c
@@ -213,6 +222,7 @@ def solve(
     embedding_model: str = "all-MiniLM-L6-v2",
     ambiguity_threshold: float = 0.60,
     window_size: int = 3,
+    refinement_method: str = "batch",
     show_progress: bool = True,
 ) -> Tuple[Segmentation, dict]:
     """
@@ -224,6 +234,7 @@ def solve(
         embedding_model      : modelo de sentence-transformers para fase 1
         ambiguity_threshold  : umbral coseno para marcar un corte como ambiguo
         window_size          : elementos a cada lado del corte para la fase 2
+        refinement_method    : "batch" (rápido) o "pairwise" (lento)
         show_progress        : mostrar progreso
 
     Returns:
@@ -244,7 +255,7 @@ def solve(
     t2_start = time.perf_counter()
     seg1 = _phase2(
         problem, seg0, embeddings, coh_cosine, client,
-        ambiguity_threshold, window_size
+        ambiguity_threshold, window_size, refinement_method
     )
     t2 = time.perf_counter() - t2_start
 
@@ -265,6 +276,7 @@ def solve(
         "model": llm_st["model"],
         "ambiguity_threshold": ambiguity_threshold,
         "window_size": window_size,
+        "refinement_method": refinement_method,
         "initial_cuts": seg0.cuts,
         "refined_cuts": seg1.cuts,
     }

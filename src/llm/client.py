@@ -31,16 +31,16 @@ from typing import Optional, Tuple
 from dotenv import load_dotenv
 
 from src.llm.cache import LLMCache
-from src.llm.prompts import format_coherence_prompt
+from src.llm.prompts import format_coherence_prompt, format_best_cut_prompt
 
-load_dotenv()
+load_dotenv(override=True)
 
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Configuración
 # ──────────────────────────────────────────────────────────────────────────────
 
-DEFAULT_MODEL = os.getenv("LLM_MODEL", "gemini/gemini-1.5-flash")
+DEFAULT_MODEL = os.getenv("LLM_MODEL", "gemini/gemini-3.1-flash-lite")
 DEFAULT_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.0"))
 DEFAULT_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "256"))
 
@@ -92,23 +92,32 @@ class LLMClient:
             ) from e
 
         last_exc = None
-        for attempt in range(3):
+        max_attempts = 8
+        for attempt in range(max_attempts):
             try:
                 response = litellm.completion(
                     model=self.model,
                     messages=[{"role": "user", "content": prompt}],
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
+                    request_timeout=30,
                 )
                 return response.choices[0].message.content.strip()
             except Exception as exc:
                 last_exc = exc
-                wait = 2 ** attempt
+                # Si es un error de rate limit (429 / RESOURCE_EXHAUSTED), esperar más tiempo
+                is_rate_limit = (
+                    "429" in str(exc) 
+                    or "RESOURCE_EXHAUSTED" in str(exc) 
+                    or "rate_limit" in str(type(exc)).lower() 
+                    or "ratelimit" in str(type(exc)).lower()
+                )
+                wait = 15 if is_rate_limit else (2 ** attempt)
                 if self.verbose:
-                    print(f"[llm] Intento {attempt+1} fallido: {exc}. Esperando {wait}s...")
+                    print(f"[llm] Intento {attempt+1}/{max_attempts} fallido: {exc}. Esperando {wait}s...")
                 time.sleep(wait)
 
-        raise RuntimeError(f"LLM falló después de 3 intentos. Último error: {last_exc}")
+        raise RuntimeError(f"LLM falló después de {max_attempts} intentos. Último error: {last_exc}")
 
     # ── Parsing de la respuesta JSON ──────────────────────────────────────────
 
@@ -182,7 +191,8 @@ class LLMClient:
         score, razon = self._parse_coherence_response(raw)
 
         # Guardar en caché
-        self.cache.put(prompt, self.model, {"score": score, "razon": razon, "raw": raw})
+        if razon != "parse_error":
+            self.cache.put(prompt, self.model, {"score": score, "razon": razon, "raw": raw})
 
         if self.verbose:
             print(f"[llm] score={score:.3f} | {razon}")
@@ -207,6 +217,63 @@ class LLMClient:
         text = problem.get_segment_text(start, end, separator=separator)
         score, _ = self.ask_coherence(text)
         return score
+
+    def _parse_best_cut_response(self, raw: str, lo: int, hi: int) -> Tuple[int, str]:
+        """
+        Parsea la respuesta JSON del LLM para el prompt de mejor corte.
+        """
+        try:
+            # Eliminar posibles bloques ```json ... ```
+            clean = re.sub(r"```(?:json)?\s*", "", raw).strip().rstrip("`").strip()
+            data = json.loads(clean)
+            best_cut = int(data["best_cut"])
+            # Asegurar que el corte esté dentro del rango de opciones candidato
+            best_cut = max(lo, min(hi, best_cut))
+            razon = str(data.get("razon", ""))
+            return best_cut, razon
+        except (json.JSONDecodeError, KeyError, ValueError):
+            pass
+
+        # Fallback con regex
+        m = re.search(r'"best_cut"\s*:\s*(\d+)', raw)
+        if m:
+            best_cut = int(m.group(1))
+            best_cut = max(lo, min(hi, best_cut))
+            return best_cut, "parse_fallback_regex"
+
+        # Si todo falla, devolvemos el punto medio como fallback seguro
+        return (lo + hi) // 2, "parse_error"
+
+    def ask_best_cut(self, problem, lo: int, hi: int, window_size: int) -> Tuple[int, str]:
+        """
+        Pide al LLM encontrar el mejor corte en el rango [lo, hi] en una sola llamada.
+        """
+        prompt = format_best_cut_prompt(problem, lo, hi, window_size)
+        self._total_requests += 1
+
+        # Consultar caché
+        cached = self.cache.get(prompt, self.model)
+        if cached is not None:
+            if self.verbose:
+                print(f"[llm] CACHE HIT (best_cut) | cut={cached['best_cut']}")
+            return int(cached["best_cut"]), cached["razon"]
+
+        # Llamada real al LLM
+        self._call_count += 1
+        if self.verbose:
+            print(f"[llm] CALL #{self._call_count} (best_cut) | rango=[{lo}..{hi}]")
+
+        raw = self._call_llm_raw(prompt)
+        best_cut, razon = self._parse_best_cut_response(raw, lo, hi)
+
+        # Guardar en caché
+        if razon != "parse_error":
+            self.cache.put(prompt, self.model, {"best_cut": best_cut, "razon": razon, "raw": raw})
+
+        if self.verbose:
+            print(f"[llm] best_cut={best_cut} | {razon}")
+
+        return best_cut, razon
 
     # ── Estadísticas ──────────────────────────────────────────────────────────
 

@@ -105,6 +105,21 @@ Los resultados se guardan incrementalmente en `data/results/results_all.csv`.
 python src/main.py summary
 ```
 
+---
+
+## Interfaz Gráfica (Frontend Streamlit)
+
+El proyecto incluye un dashboard interactivo web premium desarrollado en **Streamlit** que permite:
+- **Visualización en tiempo real:** Ver los párrafos agrupados en cards de colores según su segmento temático asignado de forma óptima.
+- **Importación directa de Wikipedia:** Descargar artículos de Wikipedia en cualquier idioma directamente desde la interfaz para segmentarlos al instante.
+- **Calibración interactiva:** Ajustar de forma dinámica la penalización de cortes $\lambda$ y la ventana de revisión $w$ para ver inmediatamente cómo afectan a la cantidad e intra-coherencia de los segmentos resultantes.
+- **Gráficas técnicas:** Visualizar el heatmap de similitud coseno de los embeddings y la distribución de longitudes de segmentos.
+
+Para iniciar la aplicación, ejecuta el siguiente comando:
+```bash
+streamlit run src/app.py
+```
+
 ### Ejecutar tests
 
 ```bash
