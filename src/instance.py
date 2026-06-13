@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 import requests
+from bs4 import BeautifulSoup
 
 from src.problem import SegmentationProblem, TextElement
 
@@ -224,12 +225,25 @@ _TOPIC_TEMPLATES = {
 }
 
 
+_TRANSITION_FILLERS = [
+    "Cambiando de tema por un momento.",
+    "Ahora bien, pasemos a considerar otro punto de vista.",
+    "Como se ha venido mencionando en las secciones anteriores.",
+    "Veamos esto con más detalle a continuación.",
+    "Dejando a un lado este aspecto, hay otro factor importante.",
+    "Volviendo a retomar el hilo principal de nuestra discusión.",
+    "En otro orden de ideas, cabe señalar lo siguiente.",
+    "A continuación se presentan algunos aspectos complementarios.",
+]
+
+
 def generate_synthetic(
     n: int,
     k_true: int,
     topics: Optional[List[str]] = None,
     seed: int = 42,
     noise_ratio: float = 0.1,
+    noise_type: str = "topic_swap",  # "topic_swap" o "filler_injection"
 ) -> SegmentationProblem:
     """
     Genera una instancia sintética con cortes verdaderos conocidos.
@@ -240,6 +254,7 @@ def generate_synthetic(
         topics      : lista de temas a usar (se toman k_true+1 aleatorios si None)
         seed        : semilla aleatoria
         noise_ratio : fracción de elementos que se asignan a un tema incorrecto (ruido)
+        noise_type  : tipo de ruido a inyectar ("topic_swap" o "filler_injection")
 
     Returns:
         SegmentationProblem con true_cuts conocidos.
@@ -249,10 +264,9 @@ def generate_synthetic(
 
     if topics is None:
         if k_true + 1 > len(all_topics):
-            raise ValueError(
-                f"Se necesitan {k_true+1} temas pero solo hay {len(all_topics)} disponibles."
-            )
-        topics = rng.sample(all_topics, k_true + 1)
+            topics = [rng.choice(all_topics) for _ in range(k_true + 1)]
+        else:
+            topics = rng.sample(all_topics, k_true + 1)
 
     # Dividir n elementos en k_true+1 segmentos aproximadamente iguales
     seg_sizes = _distribute(n, k_true + 1, rng)
@@ -267,16 +281,24 @@ def generate_synthetic(
     for seg_idx, (topic, size) in enumerate(zip(topics, seg_sizes)):
         templates = _TOPIC_TEMPLATES[topic]
         for _ in range(size):
-            # Ocasionalmente insertar ruido (elemento de otro tema)
-            if rng.random() < noise_ratio and len(all_topics) > 1:
-                noise_topic = rng.choice([t for t in all_topics if t != topic])
-                text = rng.choice(_TOPIC_TEMPLATES[noise_topic])
-            else:
-                text = rng.choice(templates)
+            text = rng.choice(templates)
+            
+            # Ocasionalmente insertar ruido
+            if rng.random() < noise_ratio:
+                if noise_type == "topic_swap" and len(all_topics) > 1:
+                    noise_topic = rng.choice([t for t in all_topics if t != topic])
+                    text = rng.choice(_TOPIC_TEMPLATES[noise_topic])
+                elif noise_type == "filler_injection":
+                    filler = rng.choice(_TRANSITION_FILLERS)
+                    if rng.choice([True, False]):
+                        text = f"{filler} {text}"
+                    else:
+                        text = f"{text} {filler}"
+            
             elements.append(TextElement(idx=idx, text=text))
             idx += 1
 
-    name = f"synthetic_n{n}_k{k_true}_seed{seed}"
+    name = f"synthetic_n{n}_k{k_true}_seed{seed}_{noise_type}_noise{noise_ratio}"
     return SegmentationProblem(
         elements=elements,
         name=name,
@@ -300,7 +322,12 @@ def _distribute(n: int, k: int, rng: random.Random) -> List[int]:
 # Generación de instancias estándar (para los experimentos)
 # ──────────────────────────────────────────────────────────────────────────────
 
-def generate_standard_instances(output_dir: str = "data/instances", seed: int = 42) -> None:
+def generate_standard_instances(
+    output_dir: str = "data/instances",
+    seed: int = 42,
+    noise_ratio: float = 0.1,
+    noise_type: str = "topic_swap",
+) -> None:
     """
     Genera y guarda el conjunto estándar de instancias sintéticas para los experimentos.
 
@@ -322,11 +349,109 @@ def generate_standard_instances(output_dir: str = "data/instances", seed: int = 
     for size_name, n, k in configs:
         for rep in range(1, 6):
             inst_seed = rng.randint(0, 10_000)
-            problem = generate_synthetic(n=n, k_true=k, seed=inst_seed)
+            problem = generate_synthetic(
+                n=n,
+                k_true=k,
+                seed=inst_seed,
+                noise_ratio=noise_ratio,
+                noise_type=noise_type,
+            )
             problem.name = f"{size_name}_{rep:02d}"
             save_path = output_path / f"{size_name}_{rep:02d}.json"
             problem.save(str(save_path))
-            print(f"[instance] Guardado: {save_path} (n={n}, k_true={k})")
+            print(f"[instance] Guardado: {save_path} (n={n}, k_true={k}, noise={noise_ratio}, type={noise_type})")
+
+
+def load_wikipedia_as_instance(
+    page_title: str,
+    language: str = "es",
+) -> SegmentationProblem:
+    """
+    Descarga un artículo de Wikipedia en español (o el idioma especificado),
+    lo divide en párrafos y utiliza las cabeceras (h2, h3) para definir las
+    fronteras de cortes verdaderas (ground truth).
+    """
+    url = f"https://{language}.wikipedia.org/w/api.php"
+    params = {
+        "action": "parse",
+        "page": page_title,
+        "format": "json",
+        "prop": "text",
+        "redirects": 1,
+    }
+    headers = {
+        "User-Agent": "OptimalSegmentationBot/1.0 (academic IA project; contact: student@example.com)"
+    }
+    print(f"[instance] Descargando artículo de Wikipedia: '{page_title}' (idioma: {language}) ...")
+    response = requests.get(url, params=params, headers=headers, timeout=15)
+    response.raise_for_status()
+    data = response.json()
+
+    if "error" in data:
+        raise ValueError(f"Error al descargar página de Wikipedia: {data['error'].get('info', 'Desconocido')}")
+
+    html_content = data["parse"]["text"]["*"]
+    soup = BeautifulSoup(html_content, "html.parser")
+
+    # Eliminar elementos irrelevantes (infoboxes, referencias, tablas, navboxes)
+    for tag in soup(["table", "div", "style", "script"]):
+        if tag.name == "table" or (tag.name == "div" and any(c in tag.get("class", []) for c in ["navbox", "reflist", "infobox"])):
+            tag.decompose()
+
+    body_div = soup.find(class_="mw-parser-output")
+    if not body_div:
+        body_div = soup
+
+    elements: List[TextElement] = []
+    true_cuts: List[int] = []
+    current_element_idx = 0
+
+    # Iterar por los elementos hijos del cuerpo de la página
+    for child in body_div.children:
+        if child.name == "p":
+            text = child.get_text().strip()
+            # Limpiar notas al pie (e.g. [1], [2])
+            text = re.sub(r"\[\d+\]", "", text)
+            # Reemplazar saltos de línea y espacios múltiples
+            text = re.sub(r"\s+", " ", text).strip()
+            
+            # Solo considerar párrafos con longitud significativa
+            if len(text.split()) >= 15:
+                elements.append(TextElement(idx=current_element_idx, text=text))
+                current_element_idx += 1
+                
+        # Detectar cabecera directamente o dentro de un div contenedor
+        header_tag = None
+        if child.name in ["h2", "h3"]:
+            header_tag = child
+        elif child.name == "div" and any(c in child.get("class", []) for c in ["mw-heading", "mw-heading2", "mw-heading3"]):
+            header_tag = child.find(["h2", "h3"])
+
+        if header_tag is not None:
+            # Una cabecera marca el inicio de una nueva sección.
+            # El último elemento agregado (si existe) es un límite/corte.
+            if current_element_idx > 0:
+                boundary_cut = current_element_idx - 1
+                # Ignorar ciertas secciones típicas de Wikipedia al final del artículo
+                header_text = header_tag.get_text().lower()
+                if any(x in header_text for x in ["referencias", "enlaces externos", "bibliografía", "véase también", "notas", "references", "external links"]):
+                    # No agregamos más cortes a partir de aquí
+                    break
+                if boundary_cut not in true_cuts:
+                    true_cuts.append(boundary_cut)
+
+    # Eliminar el último corte si coincide con el final de los elementos
+    while true_cuts and true_cuts[-1] >= len(elements) - 1:
+        true_cuts.pop()
+
+    name = f"wikipedia_{page_title.lower().replace(' ', '_')}"
+    print(f"[instance] Instancia de Wikipedia creada: {len(elements)} párrafos, {len(true_cuts)} cortes.")
+    return SegmentationProblem(
+        elements=elements,
+        name=name,
+        true_cuts=true_cuts,
+        lambda_pen=0.15,
+    )
 
 
 # ──────────────────────────────────────────────────────────────────────────────

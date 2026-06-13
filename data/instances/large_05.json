@@ -1,0 +1,1273 @@
+{
+  "name": "large_05",
+  "n": 250,
+  "lambda_pen": 0.1,
+  "k_max": null,
+  "min_seg": 1,
+  "true_cuts": [
+    18,
+    37,
+    56,
+    75,
+    94,
+    113,
+    133,
+    152,
+    172,
+    191,
+    210,
+    230
+  ],
+  "elements": [
+    {
+      "idx": 0,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 1,
+      "text": "Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 2,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 3,
+      "text": "Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 4,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 5,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 6,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 7,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 8,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 9,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 10,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 11,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler. Cambiando de tema por un momento.",
+      "embedding": null
+    },
+    {
+      "idx": 12,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 13,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 14,
+      "text": "Veamos esto con más detalle a continuación. Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 15,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 16,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 17,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 18,
+      "text": "Veamos esto con más detalle a continuación. Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 19,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 20,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno.",
+      "embedding": null
+    },
+    {
+      "idx": 21,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 22,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno.",
+      "embedding": null
+    },
+    {
+      "idx": 23,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 24,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 25,
+      "text": "La mitosis es el proceso de división celular que produce dos células hijas con el mismo número de cromosomas.",
+      "embedding": null
+    },
+    {
+      "idx": 26,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 27,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 28,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 29,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 30,
+      "text": "Ahora bien, pasemos a considerar otro punto de vista. Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 31,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 32,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 33,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 34,
+      "text": "La mitosis es el proceso de división celular que produce dos células hijas con el mismo número de cromosomas.",
+      "embedding": null
+    },
+    {
+      "idx": 35,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 36,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 37,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 38,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 39,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada. A continuación se presentan algunos aspectos complementarios.",
+      "embedding": null
+    },
+    {
+      "idx": 40,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 41,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 42,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 43,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 44,
+      "text": "Cambiando de tema por un momento. Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 45,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 46,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 47,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 48,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 49,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 50,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 51,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 52,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 53,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad. En otro orden de ideas, cabe señalar lo siguiente.",
+      "embedding": null
+    },
+    {
+      "idx": 54,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 55,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 56,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 57,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 58,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 59,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 60,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión. Volviendo a retomar el hilo principal de nuestra discusión.",
+      "embedding": null
+    },
+    {
+      "idx": 61,
+      "text": "A continuación se presentan algunos aspectos complementarios. Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 62,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 63,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas. En otro orden de ideas, cabe señalar lo siguiente.",
+      "embedding": null
+    },
+    {
+      "idx": 64,
+      "text": "Dejando a un lado este aspecto, hay otro factor importante. Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 65,
+      "text": "Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 66,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 67,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 68,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 69,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 70,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 71,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 72,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 73,
+      "text": "Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 74,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 75,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 76,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 77,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 78,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 79,
+      "text": "La complejidad computacional estudia los recursos necesarios para resolver problemas computacionales.",
+      "embedding": null
+    },
+    {
+      "idx": 80,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n). En otro orden de ideas, cabe señalar lo siguiente.",
+      "embedding": null
+    },
+    {
+      "idx": 81,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 82,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas.",
+      "embedding": null
+    },
+    {
+      "idx": 83,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas. A continuación se presentan algunos aspectos complementarios.",
+      "embedding": null
+    },
+    {
+      "idx": 84,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 85,
+      "text": "La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 86,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 87,
+      "text": "La complejidad computacional estudia los recursos necesarios para resolver problemas computacionales.",
+      "embedding": null
+    },
+    {
+      "idx": 88,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 89,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas.",
+      "embedding": null
+    },
+    {
+      "idx": 90,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas.",
+      "embedding": null
+    },
+    {
+      "idx": 91,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 92,
+      "text": "La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 93,
+      "text": "La complejidad computacional estudia los recursos necesarios para resolver problemas computacionales. Veamos esto con más detalle a continuación.",
+      "embedding": null
+    },
+    {
+      "idx": 94,
+      "text": "La complejidad computacional estudia los recursos necesarios para resolver problemas computacionales. Dejando a un lado este aspecto, hay otro factor importante.",
+      "embedding": null
+    },
+    {
+      "idx": 95,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno.",
+      "embedding": null
+    },
+    {
+      "idx": 96,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 97,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 98,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 99,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 100,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 101,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 102,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno.",
+      "embedding": null
+    },
+    {
+      "idx": 103,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 104,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 105,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 106,
+      "text": "La mitosis es el proceso de división celular que produce dos células hijas con el mismo número de cromosomas.",
+      "embedding": null
+    },
+    {
+      "idx": 107,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 108,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 109,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 110,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 111,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 112,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 113,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 114,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 115,
+      "text": "Dejando a un lado este aspecto, hay otro factor importante. El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 116,
+      "text": "Como se ha venido mencionando en las secciones anteriores. Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 117,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 118,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 119,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 120,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 121,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad. Dejando a un lado este aspecto, hay otro factor importante.",
+      "embedding": null
+    },
+    {
+      "idx": 122,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 123,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 124,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 125,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 126,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 127,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 128,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 129,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 130,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad. Volviendo a retomar el hilo principal de nuestra discusión.",
+      "embedding": null
+    },
+    {
+      "idx": 131,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 132,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 133,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 134,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 135,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 136,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 137,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 138,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 139,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 140,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 141,
+      "text": "Cambiando de tema por un momento. La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 142,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 143,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 144,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 145,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 146,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 147,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 148,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 149,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 150,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 151,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 152,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 153,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central. Volviendo a retomar el hilo principal de nuestra discusión.",
+      "embedding": null
+    },
+    {
+      "idx": 154,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 155,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 156,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 157,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 158,
+      "text": "Ahora bien, pasemos a considerar otro punto de vista. El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 159,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 160,
+      "text": "Ahora bien, pasemos a considerar otro punto de vista. El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 161,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 162,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 163,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 164,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 165,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 166,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 167,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos. Volviendo a retomar el hilo principal de nuestra discusión.",
+      "embedding": null
+    },
+    {
+      "idx": 168,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 169,
+      "text": "Como se ha venido mencionando en las secciones anteriores. La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 170,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 171,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 172,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 173,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 174,
+      "text": "La complejidad computacional estudia los recursos necesarios para resolver problemas computacionales.",
+      "embedding": null
+    },
+    {
+      "idx": 175,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 176,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 177,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n). Volviendo a retomar el hilo principal de nuestra discusión.",
+      "embedding": null
+    },
+    {
+      "idx": 178,
+      "text": "La programación orientada a objetos organiza el código en clases que encapsulan datos y comportamiento.",
+      "embedding": null
+    },
+    {
+      "idx": 179,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 180,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas.",
+      "embedding": null
+    },
+    {
+      "idx": 181,
+      "text": "La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 182,
+      "text": "La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 183,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 184,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas.",
+      "embedding": null
+    },
+    {
+      "idx": 185,
+      "text": "La programación orientada a objetos organiza el código en clases que encapsulan datos y comportamiento.",
+      "embedding": null
+    },
+    {
+      "idx": 186,
+      "text": "La programación orientada a objetos organiza el código en clases que encapsulan datos y comportamiento.",
+      "embedding": null
+    },
+    {
+      "idx": 187,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 188,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 189,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 190,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n). Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 191,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 192,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 193,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión. Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 194,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión. Volviendo a retomar el hilo principal de nuestra discusión.",
+      "embedding": null
+    },
+    {
+      "idx": 195,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 196,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 197,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 198,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 199,
+      "text": "A continuación se presentan algunos aspectos complementarios. Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 200,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 201,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 202,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 203,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 204,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 205,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 206,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 207,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 208,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 209,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 210,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 211,
+      "text": "La Revolución Industrial transformó las estructuras económicas y sociales de Europa a partir del siglo XVIII.",
+      "embedding": null
+    },
+    {
+      "idx": 212,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 213,
+      "text": "Cambiando de tema por un momento. La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    },
+    {
+      "idx": 214,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 215,
+      "text": "La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 216,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 217,
+      "text": "La caída del muro de Berlín en 1989 marcó el inicio del fin de la Guerra Fría y la reunificación alemana.",
+      "embedding": null
+    },
+    {
+      "idx": 218,
+      "text": "La caída del muro de Berlín en 1989 marcó el inicio del fin de la Guerra Fría y la reunificación alemana.",
+      "embedding": null
+    },
+    {
+      "idx": 219,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 220,
+      "text": "A continuación se presentan algunos aspectos complementarios. La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 221,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 222,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 223,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito. Dejando a un lado este aspecto, hay otro factor importante.",
+      "embedding": null
+    },
+    {
+      "idx": 224,
+      "text": "La caída del muro de Berlín en 1989 marcó el inicio del fin de la Guerra Fría y la reunificación alemana.",
+      "embedding": null
+    },
+    {
+      "idx": 225,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 226,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 227,
+      "text": "Volviendo a retomar el hilo principal de nuestra discusión. La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 228,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 229,
+      "text": "La caída del muro de Berlín en 1989 marcó el inicio del fin de la Guerra Fría y la reunificación alemana.",
+      "embedding": null
+    },
+    {
+      "idx": 230,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 231,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 232,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 233,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 234,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 235,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 236,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 237,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 238,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 239,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 240,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 241,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 242,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 243,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 244,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 245,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 246,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas. Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 247,
+      "text": "Ahora bien, pasemos a considerar otro punto de vista. La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 248,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 249,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    }
+  ]
+}

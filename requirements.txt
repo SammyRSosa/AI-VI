@@ -12,6 +12,7 @@ numpy>=1.26.0
 pandas>=2.2.0
 scikit-learn>=1.4.0        # cosine_similarity, utilidades ML
 requests>=2.31.0           # descarga desde Project Gutenberg
+beautifulsoup4>=4.12.0     # parsing de Wikipedia HTML
 
 # ── Validación / serialización ────────────────────────────────────────────────
 pydantic>=2.6.0            # parsear respuestas JSON del LLM con tipado estricto

@@ -1,0 +1,318 @@
+{
+  "name": "medium_04",
+  "n": 60,
+  "lambda_pen": 0.1,
+  "k_max": null,
+  "min_seg": 1,
+  "true_cuts": [
+    6,
+    14,
+    22,
+    30,
+    38,
+    45,
+    52
+  ],
+  "elements": [
+    {
+      "idx": 0,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 1,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 2,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 3,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 4,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 5,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 6,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 7,
+      "text": "La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 8,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 9,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 10,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas.",
+      "embedding": null
+    },
+    {
+      "idx": 11,
+      "text": "La programación orientada a objetos organiza el código en clases que encapsulan datos y comportamiento.",
+      "embedding": null
+    },
+    {
+      "idx": 12,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico. Veamos esto con más detalle a continuación.",
+      "embedding": null
+    },
+    {
+      "idx": 13,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 14,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 15,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno. Dejando a un lado este aspecto, hay otro factor importante.",
+      "embedding": null
+    },
+    {
+      "idx": 16,
+      "text": "La mitosis es el proceso de división celular que produce dos células hijas con el mismo número de cromosomas.",
+      "embedding": null
+    },
+    {
+      "idx": 17,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 18,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 19,
+      "text": "La mitosis es el proceso de división celular que produce dos células hijas con el mismo número de cromosomas.",
+      "embedding": null
+    },
+    {
+      "idx": 20,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 21,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 22,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 23,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 24,
+      "text": "La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo. Veamos esto con más detalle a continuación.",
+      "embedding": null
+    },
+    {
+      "idx": 25,
+      "text": "La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    },
+    {
+      "idx": 26,
+      "text": "La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 27,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 28,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C. Veamos esto con más detalle a continuación.",
+      "embedding": null
+    },
+    {
+      "idx": 29,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 30,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 31,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 32,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 33,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 34,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 35,
+      "text": "Volviendo a retomar el hilo principal de nuestra discusión. Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 36,
+      "text": "Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar. Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 37,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 38,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 39,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno. Veamos esto con más detalle a continuación.",
+      "embedding": null
+    },
+    {
+      "idx": 40,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico. A continuación se presentan algunos aspectos complementarios.",
+      "embedding": null
+    },
+    {
+      "idx": 41,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 42,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 43,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno.",
+      "embedding": null
+    },
+    {
+      "idx": 44,
+      "text": "Los ecosistemas son sistemas formados por comunidades de organismos y su entorno físico y químico.",
+      "embedding": null
+    },
+    {
+      "idx": 45,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 46,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 47,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 48,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno.",
+      "embedding": null
+    },
+    {
+      "idx": 49,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 50,
+      "text": "La fotosíntesis es el proceso por el cual las plantas convierten la luz solar en glucosa y oxígeno. En otro orden de ideas, cabe señalar lo siguiente.",
+      "embedding": null
+    },
+    {
+      "idx": 51,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 52,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 53,
+      "text": "La invención de la imprenta por Gutenberg en el siglo XV democratizó el acceso al conocimiento escrito.",
+      "embedding": null
+    },
+    {
+      "idx": 54,
+      "text": "La Revolución Industrial transformó las estructuras económicas y sociales de Europa a partir del siglo XVIII.",
+      "embedding": null
+    },
+    {
+      "idx": 55,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 56,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 57,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 58,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 59,
+      "text": "La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    }
+  ]
+}

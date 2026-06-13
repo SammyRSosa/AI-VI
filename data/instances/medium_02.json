@@ -1,0 +1,318 @@
+{
+  "name": "medium_02",
+  "n": 60,
+  "lambda_pen": 0.1,
+  "k_max": null,
+  "min_seg": 1,
+  "true_cuts": [
+    7,
+    15,
+    22,
+    29,
+    37,
+    44,
+    52
+  ],
+  "elements": [
+    {
+      "idx": 0,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas. Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 1,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 2,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 3,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión. Dejando a un lado este aspecto, hay otro factor importante.",
+      "embedding": null
+    },
+    {
+      "idx": 4,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 5,
+      "text": "Los agujeros negros son regiones del espacio-tiempo donde la gravedad es tan intensa que ni la luz puede escapar.",
+      "embedding": null
+    },
+    {
+      "idx": 6,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 7,
+      "text": "Dejando a un lado este aspecto, hay otro factor importante. La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 8,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 9,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 10,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 11,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 12,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 13,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 14,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    },
+    {
+      "idx": 15,
+      "text": "A continuación se presentan algunos aspectos complementarios. Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 16,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 17,
+      "text": "La Revolución Industrial transformó las estructuras económicas y sociales de Europa a partir del siglo XVIII. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 18,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 19,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 20,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    },
+    {
+      "idx": 21,
+      "text": "La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    },
+    {
+      "idx": 22,
+      "text": "A continuación se presentan algunos aspectos complementarios. La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 23,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 24,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 25,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    },
+    {
+      "idx": 26,
+      "text": "Los algoritmos de búsqueda binaria reducen la complejidad de búsqueda en listas ordenadas a O(log n).",
+      "embedding": null
+    },
+    {
+      "idx": 27,
+      "text": "Veamos esto con más detalle a continuación. La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 28,
+      "text": "Las bases de datos relacionales organizan la información en tablas vinculadas mediante claves foráneas. Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 29,
+      "text": "La programación orientada a objetos organiza el código en clases que encapsulan datos y comportamiento.",
+      "embedding": null
+    },
+    {
+      "idx": 30,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 31,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 32,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 33,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 34,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 35,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 36,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 37,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 38,
+      "text": "El proceso de fermentación del pan transforma los azúcares en dióxido de carbono y alcohol mediante levaduras.",
+      "embedding": null
+    },
+    {
+      "idx": 39,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 40,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 41,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres.",
+      "embedding": null
+    },
+    {
+      "idx": 42,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 43,
+      "text": "La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 44,
+      "text": "Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 45,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 46,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 47,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C. Ahora bien, pasemos a considerar otro punto de vista.",
+      "embedding": null
+    },
+    {
+      "idx": 48,
+      "text": "La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    },
+    {
+      "idx": 49,
+      "text": "Volviendo a retomar el hilo principal de nuestra discusión. La Revolución Industrial transformó las estructuras económicas y sociales de Europa a partir del siglo XVIII.",
+      "embedding": null
+    },
+    {
+      "idx": 50,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 51,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 52,
+      "text": "La Revolución Francesa de 1789 supuso el fin del Antiguo Régimen y el ascenso de los valores ilustrados.",
+      "embedding": null
+    },
+    {
+      "idx": 53,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 54,
+      "text": "El Imperio Romano alcanzó su máxima extensión bajo el gobierno del emperador Trajano en el siglo II d.C.",
+      "embedding": null
+    },
+    {
+      "idx": 55,
+      "text": "La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    },
+    {
+      "idx": 56,
+      "text": "La Revolución Industrial transformó las estructuras económicas y sociales de Europa a partir del siglo XVIII.",
+      "embedding": null
+    },
+    {
+      "idx": 57,
+      "text": "Veamos esto con más detalle a continuación. La Revolución Industrial transformó las estructuras económicas y sociales de Europa a partir del siglo XVIII.",
+      "embedding": null
+    },
+    {
+      "idx": 58,
+      "text": "La Primera Guerra Mundial comenzó en 1914 tras el asesinato del archiduque Francisco Fernando en Sarajevo.",
+      "embedding": null
+    },
+    {
+      "idx": 59,
+      "text": "La Ruta de la Seda conectó Asia, Oriente Próximo y Europa facilitando el intercambio comercial y cultural.",
+      "embedding": null
+    }
+  ]
+}

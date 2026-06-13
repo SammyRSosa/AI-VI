@@ -69,8 +69,11 @@ donde λ penaliza la fragmentación excesiva.
 **Proceso de generación:**
 1. Se definen K+1 temas a partir de un banco de 5 temas (astronomía, gastronomía, historia, informática, biología).
 2. Cada tema tiene 7 párrafos de referencia escritos manualmente.
-3. Se distribuyen n elementos entre K+1 segmentos, asignando a cada elemento un párrafo del tema correspondiente (con ruido controlado de 10%).
-4. Los cortes verdaderos (ground truth) se conocen por construcción.
+3. Se distribuyen n elementos entre K+1 segmentos, asignando a cada elemento un párrafo del tema correspondiente.
+4. **Modelado de Ruido y Deriva Temática (Drift):** Se implementan dos variantes de ruido paramétrico con un `noise_ratio` ajustable (por defecto, 10%):
+   - **Topic Swap (Intercambio de tema):** Reemplazo aleatorio de un párrafo por otro de un tema totalmente distinto.
+   - **Filler Injection (Inyección de frases de transición):** Inserción de frases transitorias realistas (e.g., *"Cambiando de tema..."*, *"Ahora pasemos a..."*) al principio o al final de los párrafos en los límites del corte, con el fin de evaluar la robustez semántica de los solucionadores.
+5. Los cortes verdaderos (ground truth) se conocen por construcción.
 
 **Ventajas:**
 - Verdad de campo conocida → permite calcular Boundary F1.
@@ -87,12 +90,20 @@ donde λ penaliza la fragmentación excesiva.
 
 **Total: 15 instancias, 45 corridas experimentales.**
 
-### 3.2 Por qué las instancias sintéticas son válidas
+### 3.2 Instancias reales (Wikipedia)
 
-Las instancias sintéticas cumplen con las condiciones del problema real:
+Para evaluar el sistema en escenarios del mundo real con límites temáticos determinados por humanos, el proyecto incorpora un módulo para descargar e importar artículos de Wikipedia en cualquier idioma (por defecto, español).
+
+- **Proceso de importación:** El módulo realiza una consulta a la API de Wikipedia, parsea el HTML y extrae la secuencia de párrafos (elementos) ignorando secciones de ruido (como infoboxes, tablas de referencias y enlaces externos).
+- **Fronteras de referencia:** Los encabezados del artículo (`h2`, `h3`), tanto si están directos como envueltos en divs contenedores de sección (`mw-heading`), se interpretan automáticamente como límites naturales de sección (`true_cuts`), permitiendo calcular de forma directa la métrica *Boundary F1* sobre datos reales.
+- **Ejemplo disponible:** Se incluye la instancia `wikipedia_inteligencia_artificial.json` (98 párrafos, 28 cortes reales) descargada directamente desde la Wikipedia en español.
+
+### 3.3 Por qué el dataset es válido
+
+Las instancias sintéticas y reales cumplen con las condiciones del problema real:
 1. Los párrafos dentro de cada segmento tratan el mismo tema (alta coherencia interna).
 2. Los párrafos de segmentos distintos tratan temas distintos (baja coherencia inter-segmento).
-3. El ruido del 10% simula la variabilidad real de los textos (digresiones, transiciones).
+3. El ruido o frases de transición inyectadas simulan la variabilidad real de los textos (digresiones, transiciones).
 4. El ground truth permite evaluar correctitud objetivamente.
 
 ---
@@ -324,9 +335,12 @@ Las siguientes gráficas se generarán en `notebooks/analysis.ipynb`:
 
 3. **Few-shot prompting**: incluir ejemplos de segmentos coherentes/incoherentes en el prompt para mejorar la calibración del LLM.
 
-4. **Evaluación con datos reales**: extender los experimentos a capítulos de libros de Project Gutenberg con sus divisiones originales como ground truth.
+4. **Ensemble de evaluadores**: promediar scores de múltiples LLMs para reducir varianza.
 
-5. **Ensemble de evaluadores**: promediar scores de múltiples LLMs para reducir varianza.
+### 8.3 Mejoras implementadas
+
+1. **Evaluación con Datos Reales (Wikipedia):** Incorporación del módulo de scraping y parsing de Wikipedia, el cual extrae automáticamente la estructura de secciones (`h2`, `h3`) como `true_cuts` para posibilitar la evaluación objetiva de F1 en textos reales.
+2. **Robustez ante Deriva Temática (Transiciones de Ruido):** Ampliación del generador sintético para inyectar frases de transición realistas en las fronteras de corte, lo que permite evaluar el comportamiento de los solucionadores ante sutiles cambios conversacionales.
 
 ---
 

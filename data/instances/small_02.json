@@ -1,0 +1,89 @@
+{
+  "name": "small_02",
+  "n": 15,
+  "lambda_pen": 0.1,
+  "k_max": null,
+  "min_seg": 1,
+  "true_cuts": [
+    3,
+    6,
+    10
+  ],
+  "elements": [
+    {
+      "idx": 0,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 1,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 2,
+      "text": "La evolución por selección natural es el mecanismo propuesto por Darwin para explicar la diversidad biológica.",
+      "embedding": null
+    },
+    {
+      "idx": 3,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos.",
+      "embedding": null
+    },
+    {
+      "idx": 4,
+      "text": "La complejidad computacional estudia los recursos necesarios para resolver problemas computacionales. Cambiando de tema por un momento.",
+      "embedding": null
+    },
+    {
+      "idx": 5,
+      "text": "La programación orientada a objetos organiza el código en clases que encapsulan datos y comportamiento.",
+      "embedding": null
+    },
+    {
+      "idx": 6,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 7,
+      "text": "Las estrellas son esferas de plasma que generan energía mediante la fusión nuclear en su núcleo.",
+      "embedding": null
+    },
+    {
+      "idx": 8,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 9,
+      "text": "Los cometas son cuerpos celestes formados por hielo y roca que desarrollan una coma al acercarse al Sol.",
+      "embedding": null
+    },
+    {
+      "idx": 10,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 11,
+      "text": "Las especias como la canela, el cardamomo y el azafrán han sido artículos de comercio desde la antigüedad.",
+      "embedding": null
+    },
+    {
+      "idx": 12,
+      "text": "Como se ha venido mencionando en las secciones anteriores. La técnica del sous vide consiste en cocinar alimentos envasados al vacío en agua a temperatura controlada.",
+      "embedding": null
+    },
+    {
+      "idx": 13,
+      "text": "En otro orden de ideas, cabe señalar lo siguiente. Los quesos artesanales se producen mediante la coagulación de la leche usando cuajo y cultivos bacterianos.",
+      "embedding": null
+    },
+    {
+      "idx": 14,
+      "text": "El umami es el quinto sabor básico, presente en alimentos ricos en glutamato como el tomate y el queso.",
+      "embedding": null
+    }
+  ]
+}

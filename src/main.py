@@ -41,12 +41,41 @@ def cli(ctx):
 @cli.command("generate-instances")
 @click.option("--output-dir", default="data/instances", help="Directorio de salida.")
 @click.option("--seed", default=42, type=int, help="Semilla aleatoria.")
-def generate_instances(output_dir: str, seed: int):
+@click.option("--noise-ratio", default=0.1, type=float, help="Fracción de elementos con ruido.")
+@click.option(
+    "--noise-type",
+    default="topic_swap",
+    type=click.Choice(["topic_swap", "filler_injection"]),
+    help="Tipo de ruido a inyectar.",
+)
+def generate_instances(output_dir: str, seed: int, noise_ratio: float, noise_type: str):
     """Genera el conjunto estándar de instancias sintéticas para los experimentos."""
     from src.instance import generate_standard_instances
-    console.print("[bold green]Generando instancias...[/bold green]")
-    generate_standard_instances(output_dir=output_dir, seed=seed)
-    console.print(f"[bold green]✓ Instancias guardadas en '{output_dir}'[/bold green]")
+    console.print(f"[bold green]Generando instancias (ruido={noise_ratio}, tipo={noise_type})...[/bold green]")
+    generate_standard_instances(output_dir=output_dir, seed=seed, noise_ratio=noise_ratio, noise_type=noise_type)
+    console.print(f"[bold green][OK] Instancias guardadas en '{output_dir}'[/bold green]")
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Comando: descargar e importar artículo de Wikipedia
+# ──────────────────────────────────────────────────────────────────────────────
+
+@cli.command("fetch-wikipedia")
+@click.option("--title", required=True, help="Título del artículo de Wikipedia (e.g. 'Revolución Francesa').")
+@click.option("--lang", default="es", help="Idioma de Wikipedia ('es', 'en', etc.).")
+@click.option("--output-dir", default="data/instances", help="Directorio donde guardar el JSON.")
+def fetch_wikipedia(title: str, lang: str, output_dir: str):
+    """Descarga un artículo de Wikipedia y lo guarda como una instancia del problema."""
+    from src.instance import load_wikipedia_as_instance, save_instance
+    console.print(f"[bold green]Descargando artículo '{title}' en {lang}...[/bold green]")
+    try:
+        problem = load_wikipedia_as_instance(page_title=title, language=lang)
+        output_path = Path(output_dir) / f"{problem.name}.json"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        save_instance(problem, str(output_path))
+        console.print(f"[bold green][OK] Artículo guardado correctamente en: {output_path}[/bold green]")
+    except Exception as e:
+        console.print(f"[bold red]Error al descargar artículo: {e}[/bold red]")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -133,7 +162,7 @@ def run_experiments(instances_dir: str, results_dir: str, skip_large_llm: bool):
         results_dir=results_dir,
         skip_large_dp_llm=skip_large_llm,
     )
-    console.print(f"[bold green]✓ Resultados guardados en: {csv_path}[/bold green]")
+    console.print(f"[bold green][OK] Resultados guardados en: {csv_path}[/bold green]")
 
 
 # ──────────────────────────────────────────────────────────────────────────────

@@ -1,0 +1,89 @@
+{
+  "name": "small_01",
+  "n": 15,
+  "lambda_pen": 0.1,
+  "k_max": null,
+  "min_seg": 1,
+  "true_cuts": [
+    2,
+    6,
+    10
+  ],
+  "elements": [
+    {
+      "idx": 0,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 1,
+      "text": "El chocolate proviene del cacao, cultivado principalmente en África Occidental y América Central.",
+      "embedding": null
+    },
+    {
+      "idx": 2,
+      "text": "La cocina mediterránea se caracteriza por el uso del aceite de oliva, las verduras frescas y las legumbres. Como se ha venido mencionando en las secciones anteriores.",
+      "embedding": null
+    },
+    {
+      "idx": 3,
+      "text": "La nebulosa es una nube interestelar de polvo, hidrógeno, helio y otros gases ionizados.",
+      "embedding": null
+    },
+    {
+      "idx": 4,
+      "text": "Los pulsares son estrellas de neutrones que emiten radiación electromagnética periódica con gran precisión.",
+      "embedding": null
+    },
+    {
+      "idx": 5,
+      "text": "La Vía Láctea es una galaxia espiral barrada que contiene entre 200 y 400 mil millones de estrellas.",
+      "embedding": null
+    },
+    {
+      "idx": 6,
+      "text": "Los planetas del sistema solar orbitan el Sol en trayectorias elípticas según las leyes de Kepler.",
+      "embedding": null
+    },
+    {
+      "idx": 7,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 8,
+      "text": "Las enzimas son proteínas que actúan como catalizadores en las reacciones bioquímicas de los organismos.",
+      "embedding": null
+    },
+    {
+      "idx": 9,
+      "text": "El ADN es una molécula de doble hélice que contiene la información genética de todos los seres vivos. Veamos esto con más detalle a continuación.",
+      "embedding": null
+    },
+    {
+      "idx": 10,
+      "text": "Los virus son entidades biológicas acelulares que requieren células huésped para replicarse.",
+      "embedding": null
+    },
+    {
+      "idx": 11,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 12,
+      "text": "Las redes neuronales artificiales están inspiradas en la estructura del cerebro biológico.",
+      "embedding": null
+    },
+    {
+      "idx": 13,
+      "text": "La criptografía asimétrica usa pares de claves pública y privada para garantizar la seguridad de las comunicaciones.",
+      "embedding": null
+    },
+    {
+      "idx": 14,
+      "text": "Los compiladores traducen el código fuente de alto nivel a código máquina ejecutable por el procesador.",
+      "embedding": null
+    }
+  ]
+}
