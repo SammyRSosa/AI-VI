@@ -1,0 +1,5 @@
+{
+  "best_cut": 2,
+  "razon": "El corte en el índice 2 separa claramente los temas gastronómicos (chocolate y cocina mediterránea) de los temas astronómicos que comienzan en el párrafo 3.",
+  "raw": "{\n  \"best_cut\": 2,\n  \"razon\": \"El corte en el índice 2 separa claramente los temas gastronómicos (chocolate y cocina mediterránea) de los temas astronómicos que comienzan en el párrafo 3.\"\n}"
+}

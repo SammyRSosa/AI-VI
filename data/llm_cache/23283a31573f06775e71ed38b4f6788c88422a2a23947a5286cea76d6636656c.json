@@ -1,0 +1,5 @@
+{
+  "best_cut": 100,
+  "razon": "El párrafo 100 cierra el bloque sobre redes neuronales, mientras que el 101 introduce un cambio temático claro hacia las bases de datos relacionales.",
+  "raw": "{\n  \"best_cut\": 100,\n  \"razon\": \"El párrafo 100 cierra el bloque sobre redes neuronales, mientras que el 101 introduce un cambio temático claro hacia las bases de datos relacionales.\"\n}"
+}

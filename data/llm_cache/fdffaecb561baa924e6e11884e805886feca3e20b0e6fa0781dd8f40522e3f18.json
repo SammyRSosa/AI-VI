@@ -1,0 +1,5 @@
+{
+  "best_cut": 54,
+  "razon": "El texto presenta una lista de eventos históricos hasta el párrafo 56, mientras que el párrafo 57 introduce un cambio temático abrupto hacia la astronomía.",
+  "raw": "{\n  \"best_cut\": 56,\n  \"razon\": \"El texto presenta una lista de eventos históricos hasta el párrafo 56, mientras que el párrafo 57 introduce un cambio temático abrupto hacia la astronomía.\"\n}"
+}

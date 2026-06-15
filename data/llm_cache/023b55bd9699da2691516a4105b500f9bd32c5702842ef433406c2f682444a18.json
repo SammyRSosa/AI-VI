@@ -1,0 +1,5 @@
+{
+  "best_cut": 9,
+  "razon": "El corte separa el bloque introductorio de conceptos biológicos (enzimas y ADN) de la transición hacia temas de tecnología y computación.",
+  "raw": "{\n  \"best_cut\": 9,\n  \"razon\": \"El corte separa el bloque introductorio de conceptos biológicos (enzimas y ADN) de la transición hacia temas de tecnología y computación.\"\n}"
+}

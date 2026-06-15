@@ -1,0 +1,5 @@
+{
+  "best_cut": 123,
+  "razon": "El párrafo 124 introduce explícitamente un cambio de tema mediante la frase 'Cambiando de tema por un momento', marcando una transición clara tras el bloque inicial.",
+  "raw": "{\n  \"best_cut\": 123,\n  \"razon\": \"El párrafo 124 introduce explícitamente un cambio de tema mediante la frase 'Cambiando de tema por un momento', marcando una transición clara tras el bloque inicial.\"\n}"
+}

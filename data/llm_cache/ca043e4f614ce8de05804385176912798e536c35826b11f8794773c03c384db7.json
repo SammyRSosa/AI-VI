@@ -1,0 +1,5 @@
+{
+  "best_cut": 29,
+  "razon": "El párrafo 30 introduce explícitamente un cambio de perspectiva ('Ahora bien, pasemos a considerar otro punto de vista'), marcando una transición clara tras la repetición del tema anterior en el párrafo 29.",
+  "raw": "{\n  \"best_cut\": 29,\n  \"razon\": \"El párrafo 30 introduce explícitamente un cambio de perspectiva ('Ahora bien, pasemos a considerar otro punto de vista'), marcando una transición clara tras la repetición del tema anterior en el párrafo 29.\"\n}"
+}

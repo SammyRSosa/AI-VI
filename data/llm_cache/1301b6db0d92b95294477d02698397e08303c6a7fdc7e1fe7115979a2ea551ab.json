@@ -1,0 +1,5 @@
+{
+  "best_cut": 15,
+  "razon": "El párrafo 15 es el único que trata sobre un conflicto bélico específico, mientras que los párrafos siguientes se centran en hitos de desarrollo tecnológico, comercial y social.",
+  "raw": "{\n  \"best_cut\": 15,\n  \"razon\": \"El párrafo 15 es el único que trata sobre un conflicto bélico específico, mientras que los párrafos siguientes se centran en hitos de desarrollo tecnológico, comercial y social.\"\n}"
+}

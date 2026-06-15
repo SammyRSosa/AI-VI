@@ -1,0 +1,5 @@
+{
+  "best_cut": 38,
+  "razon": "El párrafo 38 cierra el bloque temático sobre astrofísica, mientras que el 39 introduce un cambio abrupto hacia la biología (fotosíntesis).",
+  "raw": "{\n  \"best_cut\": 38,\n  \"razon\": \"El párrafo 38 cierra el bloque temático sobre astrofísica, mientras que el 39 introduce un cambio abrupto hacia la biología (fotosíntesis).\"\n}"
+}

@@ -1,0 +1,5 @@
+{
+  "best_cut": 153,
+  "razon": "El párrafo 153 incluye una frase explícita de transición ('Volviendo a retomar el hilo principal') que marca el cierre de la enumeración previa y el inicio de un nuevo bloque temático.",
+  "raw": "{\n  \"best_cut\": 153,\n  \"razon\": \"El párrafo 153 incluye una frase explícita de transición ('Volviendo a retomar el hilo principal') que marca el cierre de la enumeración previa y el inicio de un nuevo bloque temático.\"\n}"
+}

@@ -1,0 +1,5 @@
+{
+  "best_cut": 243,
+  "razon": "El corte en 243 separa la secuencia repetitiva inicial de los párrafos finales que introducen nuevos temas específicos como el chocolate y la fermentación.",
+  "raw": "{\n  \"best_cut\": 243,\n  \"razon\": \"El corte en 243 separa la secuencia repetitiva inicial de los párrafos finales que introducen nuevos temas específicos como el chocolate y la fermentación.\"\n}"
+}

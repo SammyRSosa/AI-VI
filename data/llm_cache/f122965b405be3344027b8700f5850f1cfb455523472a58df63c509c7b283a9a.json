@@ -1,0 +1,5 @@
+{
+  "best_cut": 36,
+  "razon": "El corte separa claramente los párrafos de contenido histórico (31-36) de los párrafos centrados en conceptos de informática y computación (37-40).",
+  "raw": "{\n  \"best_cut\": 36,\n  \"razon\": \"El corte separa claramente los párrafos de contenido histórico (31-36) de los párrafos centrados en conceptos de informática y computación (37-40).\"\n}"
+}

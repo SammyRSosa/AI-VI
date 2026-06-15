@@ -73,7 +73,7 @@ def run_single(
     Returns:
         dict con todas las métricas (listo para escribir en CSV).
     """
-    print(f"\n  → Ejecutando config='{config}' | instancia='{problem.name}' | n={problem.n}")
+    print(f"\n  -> Ejecutando config='{config}' | instancia='{problem.name}' | n={problem.n}")
 
     if config == "baseline_cosine":
         seg, stats = solver_baseline.solve(problem)
@@ -123,7 +123,7 @@ def run_all_experiments(
     results_dir: str = "data/results",
     configs: Optional[List[str]] = None,
     skip_large_dp_llm: bool = True,
-    large_threshold_n: int = 100,
+    large_threshold_n: int = 30,
 ) -> str:
     """
     Ejecuta todas las corridas del diseño experimental y guarda los resultados.
@@ -182,7 +182,7 @@ def run_all_experiments(
 
                 # Skip si ya está en el CSV
                 if key in existing_rows:
-                    print(f"  → SKIP (ya existe) | config='{config}'")
+                    print(f"  -> SKIP (ya existe) | config='{config}'")
                     continue
 
                 # Skip dp_llm_full para instancias grandes
@@ -192,7 +192,7 @@ def run_all_experiments(
                     and problem.n > large_threshold_n
                 ):
                     print(
-                        f"  → SKIP dp_llm_full (n={problem.n} > {large_threshold_n}) "
+                        f"  -> SKIP dp_llm_full (n={problem.n} > {large_threshold_n}) "
                         "para evitar demasiadas llamadas al LLM."
                     )
                     continue
@@ -200,7 +200,7 @@ def run_all_experiments(
                 try:
                     metrics = run_single(problem, config, client=client)
                 except Exception as e:
-                    print(f"  ⚠️  ERROR en config='{config}' instancia='{problem.name}': {e}")
+                    print(f"  [ERROR] en config='{config}' instancia='{problem.name}': {e}")
                     continue
 
                 # Inicializar el DictWriter con el header de la primera fila
@@ -216,14 +216,14 @@ def run_all_experiments(
 
                 elapsed = time.perf_counter() - t_global
                 print(
-                    f"  ✓ [{done}/{total}] score={metrics['objective_score']:.4f} | "
+                    f"  [OK] [{done}/{total}] score={metrics['objective_score']:.4f} | "
                     f"segs={metrics['num_segments']} | "
                     f"llm_calls={metrics['llm_calls']} | "
                     f"t={metrics['time_total_s']}s | "
                     f"elapsed={elapsed:.1f}s"
                 )
 
-    print(f"\n[experiments] ✅ Resultados guardados en: {output_csv}")
+    print(f"\n[experiments] [SUCCESS] Resultados guardados en: {output_csv}")
     return str(output_csv)
 
 

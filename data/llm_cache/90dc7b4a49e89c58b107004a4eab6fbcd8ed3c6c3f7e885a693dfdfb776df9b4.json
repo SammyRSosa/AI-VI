@@ -1,0 +1,5 @@
+{
+  "best_cut": 18,
+  "razon": "El corte en 18 separa claramente el bloque de conceptos astronómicos de los párrafos finales que introducen temas de biología.",
+  "raw": "{\n  \"best_cut\": 18,\n  \"razon\": \"El corte en 18 separa claramente el bloque de conceptos astronómicos de los párrafos finales que introducen temas de biología.\"\n}"
+}

@@ -1,0 +1,5 @@
+{
+  "best_cut": 40,
+  "razon": "El corte en 40 separa claramente el bloque de algoritmos de búsqueda del bloque de programación orientada a objetos que comienza en el párrafo 41.",
+  "raw": "{\n  \"best_cut\": 40,\n  \"razon\": \"El corte en 40 separa claramente el bloque de algoritmos de búsqueda del bloque de programación orientada a objetos que comienza en el párrafo 41.\"\n}"
+}

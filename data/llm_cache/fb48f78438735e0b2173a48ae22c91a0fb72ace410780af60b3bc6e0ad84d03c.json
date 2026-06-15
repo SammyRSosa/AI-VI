@@ -1,0 +1,5 @@
+{
+  "best_cut": 107,
+  "razon": "El párrafo 107 cierra la discusión sobre compiladores, mientras que el 108 introduce un cambio temático abrupto hacia las redes neuronales.",
+  "raw": "{\n  \"best_cut\": 107,\n  \"razon\": \"El párrafo 107 cierra la discusión sobre compiladores, mientras que el 108 introduce un cambio temático abrupto hacia las redes neuronales.\"\n}"
+}

@@ -1,0 +1,5 @@
+{
+  "best_cut": 11,
+  "razon": "El párrafo 11 incluye una marca explícita de transición ('Cambiando de tema por un momento'), lo que señala el cambio hacia el nuevo contenido sobre cometas.",
+  "raw": "{\n  \"best_cut\": 11,\n  \"razon\": \"El párrafo 11 incluye una marca explícita de transición ('Cambiando de tema por un momento'), lo que señala el cambio hacia el nuevo contenido sobre cometas.\"\n}"
+}

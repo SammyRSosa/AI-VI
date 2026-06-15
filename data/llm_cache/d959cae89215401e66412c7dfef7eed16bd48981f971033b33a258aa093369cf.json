@@ -1,0 +1,5 @@
+{
+  "best_cut": 75,
+  "razon": "El corte separa claramente el bloque de párrafos sobre astronomía (71-75) del bloque sobre informática y compiladores (76-80).",
+  "raw": "{\n  \"best_cut\": 75,\n  \"razon\": \"El corte separa claramente el bloque de párrafos sobre astronomía (71-75) del bloque sobre informática y compiladores (76-80).\"\n}"
+}

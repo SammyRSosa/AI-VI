@@ -1,0 +1,5 @@
+{
+  "best_cut": 35,
+  "razon": "El párrafo 35 define una molécula fundamental, mientras que a partir del 36 el texto comienza a listar conceptos biológicos de nivel superior (ecosistemas, evolución, enzimas).",
+  "raw": "{\n  \"best_cut\": 35,\n  \"razon\": \"El párrafo 35 define una molécula fundamental, mientras que a partir del 36 el texto comienza a listar conceptos biológicos de nivel superior (ecosistemas, evolución, enzimas).\"\n}"
+}

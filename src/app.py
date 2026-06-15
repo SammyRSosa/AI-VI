@@ -282,6 +282,42 @@ else:
     window_size = 3
     refinement_method = "batch"
 
+# Sección de Simulación Monte Carlo
+st.sidebar.markdown("---")
+st.sidebar.markdown("### ⏳ Simulación Monte Carlo")
+sim_replicas = st.sidebar.number_input(
+    "Réplicas Monte Carlo:",
+    min_value=5,
+    max_value=200,
+    value=50,
+    step=5,
+    help="Número de simulaciones independientes para estimar los intervalos de confianza.",
+)
+sim_rpm = st.sidebar.number_input(
+    "Límite RPM de API:",
+    min_value=1,
+    max_value=1000,
+    value=15,
+    step=1,
+    help="Peticiones por minuto máximas admitidas por el servidor (Gemini Free = 15).",
+)
+sim_mu = st.sidebar.slider(
+    "Tiempo medio servicio LLM (s):",
+    min_value=0.1,
+    max_value=5.0,
+    value=1.2,
+    step=0.1,
+    help="Tiempo promedio que tarda el LLM en responder una petición individual.",
+)
+sim_sigma = st.sidebar.slider(
+    "Desviación estándar LLM (s):",
+    min_value=0.01,
+    max_value=1.0,
+    value=0.2,
+    step=0.05,
+    help="Dispersión estocástica del tiempo de servicio.",
+)
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Carga de la instancia seleccionada
@@ -300,6 +336,19 @@ if selected_instance_name:
         f"**Elementos (párrafos):** {problem.n} | "
         f"**Ground Truth:** {'Disponible' if problem.true_cuts is not None else 'No disponible'}"
     )
+    
+    # Calcular métricas básicas de colas / ambigüedad para simulación
+    try:
+        embeddings_sim = solver_baseline.compute_embeddings(problem)
+        coh_matrix_sim = solver_baseline.build_coherence_matrix_cosine(embeddings_sim)
+        seg0_sim = solver_baseline.dp_segmentation(problem, coh_matrix_sim)
+        from src.solver.two_phase import _find_ambiguous_cuts
+        ambiguous_cuts_sim = _find_ambiguous_cuts(list(seg0_sim.cuts), embeddings_sim, ambiguity_threshold)
+        num_ambiguous_sim = len(ambiguous_cuts_sim)
+        total_initial_cuts = len(seg0_sim.cuts)
+    except Exception:
+        num_ambiguous_sim = 0
+        total_initial_cuts = 0
 else:
     st.warning("No hay instancias JSON disponibles. Por favor, descarga un artículo de Wikipedia en la barra lateral o ejecuta `python src/main.py generate-instances` desde la terminal.")
     st.stop()
@@ -412,7 +461,11 @@ if "results" in st.session_state:
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Pestañas de Visualización
-    tab_text, tab_plots = st.tabs(["📝 Texto Segmentado", "📊 Gráficas e Insight Técnico"])
+    tab_text, tab_plots, tab_sim = st.tabs([
+        "📝 Texto Segmentado", 
+        "📊 Gráficas e Insight Técnico", 
+        "⏳ Simulación de Sistemas / Colas"
+    ])
     
     # --- PESTAÑA 1: Texto Segmentado ---
     with tab_text:
@@ -550,3 +603,143 @@ if "results" in st.session_state:
             ]
         }
         st.table(metrics_df)
+
+    # --- PESTAÑA 3: Simulación de Sistemas / Colas ---
+    with tab_sim:
+        st.markdown("### 📊 Análisis de Simulación Estocástica y Colas")
+        st.markdown(
+            f"""
+            Este análisis modela estocásticamente el resolvedor **Two-Phase** utilizando un simulador de eventos discretos. 
+            Permite evaluar el rendimiento teórico del sistema bajo las cuotas gratuitas de la API sin realizar llamadas de red reales.
+            
+            **Métricas del Escenario Actual:**
+            *   **Cortes iniciales detectados (Fase 1):** `{total_initial_cuts}`
+            *   **Cortes ambiguos (Fase 2):** `{num_ambiguous_sim}` (con umbral coseno de `{ambiguity_threshold}`)
+            *   **Ventana de revisión local ($w$):** `{window_size}`
+            """
+        )
+        
+        if num_ambiguous_sim == 0:
+            st.warning("⚠️ No se detectaron cortes ambiguos con el umbral actual. Incrementa el umbral de ambigüedad en la barra lateral para simular la Fase 2.")
+        else:
+            # Ejecutar Simulación Monte Carlo
+            from src.evaluation.simulation import simulate_comparison
+            
+            with st.spinner("Ejecutando réplicas de simulación Monte Carlo..."):
+                sim_data = simulate_comparison(
+                    num_ambiguous_cuts=num_ambiguous_sim,
+                    window_size=window_size,
+                    num_replicas=int(sim_replicas),
+                    rpm_limit=int(sim_rpm),
+                    service_mu=sim_mu,
+                    service_sigma=sim_sigma,
+                )
+                
+            # Extraer resultados
+            batch_time, batch_time_lo, batch_time_hi = sim_data["batch"]["total_time"]
+            pair_time, pair_time_lo, pair_time_hi = sim_data["pairwise"]["total_time"]
+            
+            batch_blocks, _, _ = sim_data["batch"]["blocks_triggered"]
+            pair_blocks, _, _ = sim_data["pairwise"]["blocks_triggered"]
+            
+            batch_delay, _, _ = sim_data["batch"]["queue_delay"]
+            pair_delay, _, _ = sim_data["pairwise"]["queue_delay"]
+            
+            # Comparativa rápida en tarjetas
+            sim_cols = st.columns(3)
+            with sim_cols[0]:
+                st.markdown(
+                    f"""<div class="metric-card">
+                        <div class="metric-value" style="color: #34a853;">{batch_time:.2f} s</div>
+                        <div class="metric-label">Tiempo Batch Simulado<br>(IC 95%: [{batch_time_lo:.2f} - {batch_time_hi:.2f}])</div>
+                    </div>""",
+                    unsafe_allow_html=True,
+                )
+            with sim_cols[1]:
+                st.markdown(
+                    f"""<div class="metric-card">
+                        <div class="metric-value" style="color: #ea4335;">{pair_time:.2f} s</div>
+                        <div class="metric-label">Tiempo Pairwise Simulado<br>(IC 95%: [{pair_time_lo:.2f} - {pair_time_hi:.2f}])</div>
+                    </div>""",
+                    unsafe_allow_html=True,
+                )
+            with sim_cols[2]:
+                ratio = pair_time / max(0.1, batch_time)
+                st.markdown(
+                    f"""<div class="metric-card">
+                        <div class="metric-value" style="color: #1a73e8;">{ratio:.1f}x</div>
+                        <div class="metric-label">Factor de Aceleración<br>(Batch vs Pairwise)</div>
+                    </div>""",
+                    unsafe_allow_html=True,
+                )
+                
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            # Gráficas
+            g_cols = st.columns(2)
+            
+            with g_cols[0]:
+                st.markdown("#### Tiempo de Ejecución Simulado e Intervalos de Confianza (95%)")
+                fig_time, ax_time = plt.subplots(figsize=(6, 4.5))
+                
+                methods = ["Batch (Lote)", "Pairwise (Par-a-Par)"]
+                means = [batch_time, pair_time]
+                errors = [batch_time_hi - batch_time, pair_time_hi - pair_time]
+                
+                bars = ax_time.bar(methods, means, yerr=errors, capsize=8, color=["#34a853", "#ea4335"], edgecolor="black", alpha=0.8)
+                ax_time.set_ylabel("Tiempo Total (segundos)")
+                ax_time.set_title("Comparación de Tiempos Totales Simulación")
+                
+                # Anotar medias
+                for bar in bars:
+                    height = bar.get_height()
+                    ax_time.annotate(
+                        f"{height:.2f}s",
+                        xy=(bar.get_x() + bar.get_width() / 2, height),
+                        xytext=(0, 5),
+                        textcoords="offset points",
+                        ha="center",
+                        va="bottom",
+                        fontweight="bold"
+                    )
+                st.pyplot(fig_time)
+                
+            with g_cols[1]:
+                st.markdown("#### Histograma de Tiempos de Simulación Monte Carlo")
+                fig_hist, ax_hist = plt.subplots(figsize=(6, 4.5))
+                sns.histplot(sim_data["batch"]["raw_times"][0], kde=True, color="#34a853", label="Batch", ax=ax_hist, alpha=0.5)
+                sns.histplot(sim_data["pairwise"]["raw_times"][0], kde=True, color="#ea4335", label="Pairwise", ax=ax_hist, alpha=0.5)
+                ax_hist.set_xlabel("Tiempo Total (segundos)")
+                ax_hist.set_ylabel("Frecuencia")
+                ax_hist.set_title("Distribución Estocástica de Tiempos")
+                ax_hist.legend()
+                st.pyplot(fig_hist)
+                
+            # Mostrar tabla detallada
+            st.markdown("---")
+            st.markdown("#### Tabla Comparativa de Parámetros de Simulación")
+            
+            sim_df = {
+                "Esquema de Simulación": ["Batch (Lote)", "Pairwise (Par-a-Par)"],
+                "Total Peticiones a Servidor": [sim_data["params"]["requests_batch"], sim_data["params"]["requests_pairwise"]],
+                "Tiempo Promedio Simulado": [f"{batch_time:.3f} s", f"{pair_time:.3f} s"],
+                "Límite de Confianza 95%": [f"[{batch_time_lo:.3f} s, {batch_time_hi:.3f} s]", f"[{pair_time_lo:.3f} s, {pair_time_hi:.3f} s]"],
+                "Retardo de Cola / Espera Promedio (429)": [f"{batch_delay:.2f} s", f"{pair_delay:.2f} s"],
+                "Bloqueos 429 Promedio": [f"{batch_blocks:.2f}", f"{pair_blocks:.2f}"]
+            }
+            st.table(sim_df)
+            
+            # Texto explicativo de Teoría de Colas
+            st.markdown(
+                """
+                ### 📚 Análisis del Sistema desde la Teoría de Colas (Sistemas de Línea de Espera)
+                En el ámbito de la simulación y la teoría de colas, el resolvedor Two-Phase actúa como un **sistema de colas con servicio secuencial**:
+                
+                *   **Tasa de Arribo ($\lambda_a$):** Está gobernada por el método de refinamiento. En el método **Pairwise**, la tasa de arribo es elevada, ya que genera $(2w+1) \times 2$ peticiones por corte. En el método **Batch**, la tasa se reduce a 1 petición por corte.
+                *   **Tasa de Servicio ($\mu_s$):** Es el tiempo de respuesta del LLM externo, modelado estocásticamente mediante una **distribución Normal** ($\mathcal{N}(\mu, \sigma)$).
+                *   **Capacidad de Servicio Limitada (API Throttling):** La API gratuita impone una restricción rígida de $15$ RPM. Esto actúa como un **servidor con disciplina de cola especial**: si la ventana de 60 segundos se satura, el sistema se bloquea y se introduce un retardo forzado (tiempo de *backoff* de 15 segundos o lo necesario para limpiar la ventana deslizante).
+                
+                **Conclusión del Modelo:**
+                El método **Batch** optimiza el sistema reduciendo la tasa de arribos de peticiones ($\lambda_a$), impidiendo de forma de terminista que se alcance la saturación del servidor externo. Esto elimina los retardos exponenciales introducidos por los bloqueos 429 y optimiza el tiempo de respuesta total.
+                """
+            )

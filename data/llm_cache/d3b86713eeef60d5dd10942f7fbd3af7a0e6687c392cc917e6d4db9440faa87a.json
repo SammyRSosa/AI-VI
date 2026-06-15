@@ -1,0 +1,5 @@
+{
+  "best_cut": 24,
+  "razon": "El párrafo 24 contiene un conector explícito de transición que marca el cierre del bloque sobre el muro de Berlín y prepara el cambio hacia el nuevo tema introducido en el párrafo 25.",
+  "raw": "{\n  \"best_cut\": 24,\n  \"razon\": \"El párrafo 24 contiene un conector explícito de transición que marca el cierre del bloque sobre el muro de Berlín y prepara el cambio hacia el nuevo tema introducido en el párrafo 25.\"\n}"
+}

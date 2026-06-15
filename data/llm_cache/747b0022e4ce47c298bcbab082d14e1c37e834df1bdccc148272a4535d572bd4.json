@@ -1,0 +1,5 @@
+{
+  "best_cut": 37,
+  "razon": "El párrafo 37 trata sobre biología evolutiva, mientras que a partir del 38 el texto cambia abruptamente a temas de gastronomía.",
+  "raw": "{\n  \"best_cut\": 37,\n  \"razon\": \"El párrafo 37 trata sobre biología evolutiva, mientras que a partir del 38 el texto cambia abruptamente a temas de gastronomía.\"\n}"
+}

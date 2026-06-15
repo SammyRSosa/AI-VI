@@ -1,0 +1,5 @@
+{
+  "best_cut": 101,
+  "razon": "El corte en 101 separa claramente el bloque de conceptos técnicos previos de la introducción de un nuevo tema sobre complejidad computacional en el párrafo 102.",
+  "raw": "{\n  \"best_cut\": 101,\n  \"razon\": \"El corte en 101 separa claramente el bloque de conceptos técnicos previos de la introducción de un nuevo tema sobre complejidad computacional en el párrafo 102.\"\n}"
+}

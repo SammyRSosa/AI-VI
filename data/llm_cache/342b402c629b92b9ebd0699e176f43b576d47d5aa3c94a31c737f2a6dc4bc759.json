@@ -1,0 +1,5 @@
+{
+  "best_cut": 7,
+  "razon": "El párrafo 8 introduce explícitamente un cambio de tema ('Cambiando de tema por un momento'), marcando una ruptura clara con el contenido del párrafo 7.",
+  "raw": "{\n  \"best_cut\": 7,\n  \"razon\": \"El párrafo 8 introduce explícitamente un cambio de tema ('Cambiando de tema por un momento'), marcando una ruptura clara con el contenido del párrafo 7.\"\n}"
+}

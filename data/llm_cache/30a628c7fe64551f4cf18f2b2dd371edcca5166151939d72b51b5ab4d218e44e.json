@@ -1,0 +1,5 @@
+{
+  "best_cut": 30,
+  "razon": "El párrafo 30 trata sobre gastronomía, mientras que a partir del 31 el texto se centra exclusivamente en eventos históricos y conceptos técnicos, marcando la ruptura temática más clara.",
+  "raw": "{\n  \"best_cut\": 30,\n  \"razon\": \"El párrafo 30 trata sobre gastronomía, mientras que a partir del 31 el texto se centra exclusivamente en eventos históricos y conceptos técnicos, marcando la ruptura temática más clara.\"\n}"
+}

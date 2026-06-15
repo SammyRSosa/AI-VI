@@ -1,0 +1,5 @@
+{
+  "best_cut": 173,
+  "razon": "El párrafo 173 trata sobre informática, mientras que a partir del 174 el texto comienza una serie de eventos históricos, marcando la transición temática más clara.",
+  "raw": "{\n  \"best_cut\": 173,\n  \"razon\": \"El párrafo 173 trata sobre informática, mientras que a partir del 174 el texto comienza una serie de eventos históricos, marcando la transición temática más clara.\"\n}"
+}

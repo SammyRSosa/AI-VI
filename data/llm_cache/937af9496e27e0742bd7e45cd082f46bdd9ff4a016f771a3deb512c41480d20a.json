@@ -1,0 +1,5 @@
+{
+  "best_cut": 44,
+  "razon": "El corte en 44 separa claramente el bloque de párrafos sobre técnicas y productos culinarios de los párrafos finales que tratan sobre eventos históricos.",
+  "raw": "{\n  \"best_cut\": 44,\n  \"razon\": \"El corte en 44 separa claramente el bloque de párrafos sobre técnicas y productos culinarios de los párrafos finales que tratan sobre eventos históricos.\"\n}"
+}

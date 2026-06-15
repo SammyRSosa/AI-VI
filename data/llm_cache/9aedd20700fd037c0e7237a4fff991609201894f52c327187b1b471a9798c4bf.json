@@ -1,0 +1,5 @@
+{
+  "best_cut": 14,
+  "razon": "El corte en 14 separa claramente el bloque de conceptos informáticos (10-14) del bloque de conceptos biológicos (15-19).",
+  "raw": "{\n  \"best_cut\": 14,\n  \"razon\": \"El corte en 14 separa claramente el bloque de conceptos informáticos (10-14) del bloque de conceptos biológicos (15-19).\"\n}"
+}

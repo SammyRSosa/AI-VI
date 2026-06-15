@@ -1,0 +1,5 @@
+{
+  "best_cut": 203,
+  "razon": "El párrafo 203 cierra una sección con una frase de transición explícita, y el 204 introduce un cambio de tema marcado explícitamente con la frase 'Cambiando de tema por un momento'.",
+  "raw": "{\n  \"best_cut\": 203,\n  \"razon\": \"El párrafo 203 cierra una sección con una frase de transición explícita, y el 204 introduce un cambio de tema marcado explícitamente con la frase 'Cambiando de tema por un momento'.\"\n}"
+}

@@ -1,0 +1,5 @@
+{
+  "best_cut": 190,
+  "razon": "El párrafo 190 cierra la discusión sobre algoritmos y utiliza un conector explícito para introducir un cambio temático hacia las redes neuronales en el párrafo 191.",
+  "raw": "{\n  \"best_cut\": 190,\n  \"razon\": \"El párrafo 190 cierra la discusión sobre algoritmos y utiliza un conector explícito para introducir un cambio temático hacia las redes neuronales en el párrafo 191.\"\n}"
+}

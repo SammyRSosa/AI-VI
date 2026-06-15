@@ -1,0 +1,5 @@
+{
+  "best_cut": 11,
+  "razon": "El párrafo 11 contiene un conector explícito ('Dejando a un lado este aspecto, hay otro factor importante') que marca una transición temática clara hacia el contenido siguiente.",
+  "raw": "{\n  \"best_cut\": 11,\n  \"razon\": \"El párrafo 11 contiene un conector explícito ('Dejando a un lado este aspecto, hay otro factor importante') que marca una transición temática clara hacia el contenido siguiente.\"\n}"
+}

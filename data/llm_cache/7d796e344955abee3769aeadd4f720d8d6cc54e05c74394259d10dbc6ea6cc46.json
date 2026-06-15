@@ -1,0 +1,5 @@
+{
+  "best_cut": 56,
+  "razon": "El párrafo 56 contiene una marca explícita de transición ('Cambiando de tema por un momento') que separa claramente el bloque anterior de la repetición temática posterior.",
+  "raw": "{\n  \"best_cut\": 56,\n  \"razon\": \"El párrafo 56 contiene una marca explícita de transición ('Cambiando de tema por un momento') que separa claramente el bloque anterior de la repetición temática posterior.\"\n}"
+}

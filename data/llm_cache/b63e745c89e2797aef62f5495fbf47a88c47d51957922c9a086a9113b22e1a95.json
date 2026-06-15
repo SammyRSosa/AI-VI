@@ -1,0 +1,5 @@
+{
+  "best_cut": 50,
+  "razon": "El párrafo 50 cierra una idea sobre el Imperio Romano, mientras que el 51 introduce un cambio abrupto de tema mediante un conector discursivo hacia la historia contemporánea.",
+  "raw": "{\n  \"best_cut\": 50,\n  \"razon\": \"El párrafo 50 cierra una idea sobre el Imperio Romano, mientras que el 51 introduce un cambio abrupto de tema mediante un conector discursivo hacia la historia contemporánea.\"\n}"
+}

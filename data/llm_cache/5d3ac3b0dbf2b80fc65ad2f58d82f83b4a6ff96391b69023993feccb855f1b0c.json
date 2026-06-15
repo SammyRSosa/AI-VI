@@ -1,0 +1,5 @@
+{
+  "best_cut": 30,
+  "razon": "El párrafo 30 actúa como una introducción temática general, mientras que a partir del 31 comienza una enumeración de eventos históricos específicos sin conexión lógica previa.",
+  "raw": "{\n  \"best_cut\": 30,\n  \"razon\": \"El párrafo 30 actúa como una introducción temática general, mientras que a partir del 31 comienza una enumeración de eventos históricos específicos sin conexión lógica previa.\"\n}"
+}

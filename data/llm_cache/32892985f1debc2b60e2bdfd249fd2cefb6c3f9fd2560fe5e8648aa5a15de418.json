@@ -1,0 +1,5 @@
+{
+  "best_cut": 230,
+  "razon": "El corte en 230 separa claramente el bloque de conceptos de informática (225-230) del bloque de conceptos astronómicos (231-234).",
+  "raw": "{\n  \"best_cut\": 230,\n  \"razon\": \"El corte en 230 separa claramente el bloque de conceptos de informática (225-230) del bloque de conceptos astronómicos (231-234).\"\n}"
+}

@@ -1,0 +1,5 @@
+{
+  "best_cut": 6,
+  "razon": "El corte separa claramente el bloque de astronomía (párrafos 4-6) del bloque de biología (párrafos 7-10).",
+  "raw": "{\n  \"best_cut\": 6,\n  \"razon\": \"El corte separa claramente el bloque de astronomía (párrafos 4-6) del bloque de biología (párrafos 7-10).\"\n}"
+}

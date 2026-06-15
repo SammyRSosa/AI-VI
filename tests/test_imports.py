@@ -153,3 +153,61 @@ class TestTwoPhaseBatch:
         assert stats["refinement_method"] == "batch"
         # Debería haber hecho a lo sumo 2 llamadas al LLM (una por cada corte ambiguo inicial)
         assert stats["llm_calls"] <= 2
+
+
+class TestLLMQueueSimulator:
+
+    def test_simulator_initialization(self):
+        from src.evaluation.simulation import LLMQueueSimulator
+        sim = LLMQueueSimulator(rpm_limit=20, service_mu=1.5, service_sigma=0.3, backoff_seconds=10.0)
+        assert sim.rpm_limit == 20
+        assert sim.service_mu == 1.5
+        assert sim.service_sigma == 0.3
+        assert sim.backoff_seconds == 10.0
+
+    def test_simulate_run_empty(self):
+        from src.evaluation.simulation import LLMQueueSimulator
+        sim = LLMQueueSimulator()
+        res = sim.simulate_run(0)
+        assert res["total_time"] == 0.0
+        assert res["blocks_triggered"] == 0.0
+        assert res["queue_delay"] == 0.0
+
+    def test_simulate_run_positive(self):
+        from src.evaluation.simulation import LLMQueueSimulator
+        sim = LLMQueueSimulator(rpm_limit=5, service_mu=0.5, service_sigma=0.01)
+        # 10 requests with limit of 5 should trigger some queue blocks
+        res = sim.simulate_run(10)
+        assert res["total_time"] > 0.0
+        assert res["blocks_triggered"] >= 1
+        assert res["queue_delay"] > 0.0
+
+    def test_run_monte_carlo(self):
+        from src.evaluation.simulation import LLMQueueSimulator
+        sim = LLMQueueSimulator(rpm_limit=15, service_mu=0.1, service_sigma=0.01)
+        res = sim.run_monte_carlo(5, num_replicas=10)
+        
+        for key in ["total_time", "blocks_triggered", "queue_delay"]:
+            mean, lo, hi = res[key]
+            assert mean >= 0.0
+            assert lo <= mean
+            assert hi >= mean
+            
+        assert len(res["raw_times"][0]) == 10
+
+    def test_simulate_comparison(self):
+        from src.evaluation.simulation import simulate_comparison
+        comp = simulate_comparison(
+            num_ambiguous_cuts=2,
+            window_size=1,
+            num_replicas=5,
+            rpm_limit=10,
+            service_mu=0.2,
+            service_sigma=0.02
+        )
+        assert "params" in comp
+        assert "batch" in comp
+        assert "pairwise" in comp
+        assert comp["params"]["requests_batch"] == 2
+        assert comp["params"]["requests_pairwise"] == 2 * (2 * 1 + 1) * 2  # 2 * 3 * 2 = 12
+

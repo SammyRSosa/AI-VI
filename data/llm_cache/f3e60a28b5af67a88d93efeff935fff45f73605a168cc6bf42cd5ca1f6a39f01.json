@@ -1,0 +1,5 @@
+{
+  "best_cut": 102,
+  "razon": "El corte en 102 separa la lista de conceptos biológicos fundamentales de la repetición de conceptos previamente mencionados en los párrafos 103-105.",
+  "raw": "{\n  \"best_cut\": 102,\n  \"razon\": \"El corte en 102 separa la lista de conceptos biológicos fundamentales de la repetición de conceptos previamente mencionados en los párrafos 103-105.\"\n}"
+}

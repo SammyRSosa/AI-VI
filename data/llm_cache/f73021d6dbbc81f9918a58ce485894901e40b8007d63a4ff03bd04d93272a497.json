@@ -1,0 +1,5 @@
+{
+  "best_cut": 94,
+  "razon": "El texto transita de conceptos de informática (90-94) a conceptos de biología (95-99) a partir del párrafo 95.",
+  "raw": "{\n  \"best_cut\": 94,\n  \"razon\": \"El texto transita de conceptos de informática (90-94) a conceptos de biología (95-99) a partir del párrafo 95.\"\n}"
+}

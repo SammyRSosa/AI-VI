@@ -1,0 +1,5 @@
+{
+  "best_cut": 36,
+  "razon": "El corte separa claramente el bloque de contenido histórico (párrafos 32-36) del bloque de conceptos técnicos de informática (párrafos 37-41).",
+  "raw": "{\n  \"best_cut\": 36,\n  \"razon\": \"El corte separa claramente el bloque de contenido histórico (párrafos 32-36) del bloque de conceptos técnicos de informática (párrafos 37-41).\"\n}"
+}

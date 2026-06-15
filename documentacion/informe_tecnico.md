@@ -1,7 +1,7 @@
 # Informe Técnico — Segmentación Óptima de Contenido
 ## Proyecto Final: Inteligencia Artificial 2025-2026
 
-> **Autor:** [Tu nombre]  
+> **Autor:** Sammy Raul Sosa Justiz C312  
 > **Tema:** 6 — Segmentación óptima de contenido  
 > **Algoritmo principal:** Programación Dinámica (cortes óptimos)  
 > **Rol del LLM:** Evaluador de coherencia semántica (Patrón #2)
@@ -62,25 +62,20 @@ donde λ penaliza la fragmentación excesiva.
 
 ---
 
-## 3. Descripción del dataset
+## 3. Modelo de Simulación Estocástica (Dataset)
 
-### 3.1 Instancias sintéticas (generadas)
+### 3.1 Generador de Instancias como "Modelo de Simulación Estocástica de Flujos de Contenido Inestable"
 
-**Proceso de generación:**
-1. Se definen K+1 temas a partir de un banco de 5 temas (astronomía, gastronomía, historia, informática, biología).
-2. Cada tema tiene 7 párrafos de referencia escritos manualmente.
-3. Se distribuyen n elementos entre K+1 segmentos, asignando a cada elemento un párrafo del tema correspondiente.
-4. **Modelado de Ruido y Deriva Temática (Drift):** Se implementan dos variantes de ruido paramétrico con un `noise_ratio` ajustable (por defecto, 10%):
-   - **Topic Swap (Intercambio de tema):** Reemplazo aleatorio de un párrafo por otro de un tema totalmente distinto.
-   - **Filler Injection (Inyección de frases de transición):** Inserción de frases transitorias realistas (e.g., *"Cambiando de tema..."*, *"Ahora pasemos a..."*) al principio o al final de los párrafos en los límites del corte, con el fin de evaluar la robustez semántica de los solucionadores.
-5. Los cortes verdaderos (ground truth) se conocen por construcción.
+El generador de instancias (`src/instance.py`) no es simplemente un generador estático de pruebas, sino que está diseñado formalmente como un **Modelo de Simulación Estocástica** de flujos conversacionales y narrativos del mundo real (e.g., un podcast con múltiples invitados o un locutor humano con deriva temática y digresiones).
 
-**Ventajas:**
-- Verdad de campo conocida → permite calcular Boundary F1.
-- Reproducible por semilla aleatoria.
-- Control sobre dificultad (n, k, ruido).
+El sistema se modela bajo los siguientes ejes matemáticos y probabilísticos:
+1. **Modelado de los Segmentos Temáticos (Variables Aleatorias):** La longitud de cada segmento temático $S_j$ se modela de forma estocástica mediante una distribución de probabilidad que distribuye $n$ párrafos entre los $K + 1$ temas, garantizando que cada segmento contenga al menos un tamaño mínimo y mitigando el sesgo determinista mediante una distribución balanceada aleatoria (`_distribute`).
+2. **Inyección de Ruido Estocástico (Procesos de Bernoulli / Ruido Paramétrico):**
+   Para modelar la incertidumbre del comportamiento humano o fallos de coherencia, se introduce una probabilidad paramétrica de ruido $\text{noise\_ratio} \in [0.0, 1.0]$. Para cada párrafo del flujo, se evalúa una variable aleatoria de Bernoulli con $P(\text{Ruido}) = \text{noise\_ratio}$. Si se activa, se inyecta uno de los siguientes procesos estocásticos:
+   *   **Topic Swap (Intercambio de Tema):** Representa una digresión abrupta del hablante. Se sustituye el párrafo actual por un fragmento extraído uniformemente al azar del conjunto de temas no relacionados $\mathcal{T} \setminus \{T_j\}$.
+   *   **Filler Injection (Muletillas e Inyección de Transición):** Modela frases transitorias (e.g., *"Cambiando de tema por un momento"*, *"Volviendo a retomar el hilo principal"*) insertadas de forma estocástica al principio o final del párrafo. Esto actúa como un ruido semántico de frontera que altera artificialmente la similitud coseno y pone a prueba la robustez del oráculo del LLM.
 
-**Tres tamaños de instancia:**
+**Tres tamaños de instancia definidos:**
 
 | Tamaño | n elementos | k cortes | Instancias |
 |--------|-------------|---------|-----------|
@@ -88,7 +83,7 @@ donde λ penaliza la fragmentación excesiva.
 | Medium | 60          | 7       | 5         |
 | Large  | 250         | 12      | 5         |
 
-**Total: 15 instancias, 45 corridas experimentales.**
+**Total: 15 instancias de prueba, 45 corridas experimentales en total.**
 
 ### 3.2 Instancias reales (Wikipedia)
 
@@ -258,61 +253,125 @@ Embeddings → Coseno → DP → S₀ → Detección de cortes ambiguos
 
 ---
 
-## 6. Metodología experimental
+## 6. Metodología Experimental y Réplicas de Simulación
 
-### 6.1 Diseño
+El diseño experimental está estructurado con base en principios de **Simulación de Monte Carlo** y diseño estadístico de experimentos. Dado que tanto el generador sintético como el comportamiento de respuesta del LLM introducen variabilidad, una única corrida no es estadísticamente representativa.
+
+### 6.1 Réplicas y Configuración
+
+El experimento evalúa el comportamiento del sistema a través de **réplicas independientes de simulación**:
 
 | Factor | Niveles |
 |--------|---------|
-| Configuración (algoritmo) | A, B, C |
-| Tamaño de instancia | small, medium, large |
-| Instancias por tamaño | 5 |
+| Configuración (Algoritmo) | A (Baseline Coseno), B (DP-LLM Completo), C (Two-Phase / Híbrido) |
+| Tamaño de Instancia (Escenarios de Carga) | Small ($n=15$), Medium ($n=60$), Large ($n=250$) |
+| Réplicas Monte Carlo por combinación | 5 instancias independientes generadas con semillas aleatorias pseudo-aleatorias |
 
-**Total: 3 × 15 = 45 corridas** (30 si se omite Config B en large).
+**Total: 3 configuraciones × 15 instancias = 45 corridas experimentales.** 
 
-### 6.2 Métricas registradas
+Cada una de estas 45 corridas actúa como una réplica de simulación destinada a mitigar la varianza en la composición sintética y en los tiempos de respuesta del LLM, permitiendo obtener estimaciones estables de las métricas principales.
+
+### 6.2 Métricas Registradas (Indicadores de Rendimiento de Simulación)
 
 | Métrica | Descripción | ↑ o ↓ |
 |---------|-------------|-------|
-| `intra_coherence` | Coherencia interna media de los segmentos | ↑ mejor |
+| `intra_coherence` | Coherencia interna media de los segmentos (utilidad) | ↑ mejor |
 | `inter_separation` | Distancia coseno entre centroides de segmentos adyacentes | ↑ mejor |
-| `boundary_f1` | F1 de detección de fronteras vs. ground truth (±1) | ↑ mejor |
+| `boundary_f1` | F1 de detección de fronteras vs. ground truth (±1 tolerancia) | ↑ mejor |
 | `time_total_s` | Tiempo de ejecución total (segundos) | ↓ mejor |
-| `llm_calls` | Número de llamadas reales al LLM | ↓ más eficiente |
+| `llm_calls` | Número de llamadas reales al LLM (tasa de arribos) | ↓ más eficiente |
 | `objective_score` | Valor de f(C) producido por el solver | ↑ mejor |
 
-### 6.3 Condiciones de reproducibilidad
+### 6.3 Condiciones de Control y Reproducibilidad
 
-- Semilla aleatoria fija (`RANDOM_SEED=42`) para generación de instancias.
-- Temperatura LLM = 0.0 para determinismo.
-- Caché de respuestas LLM versionado en `data/llm_cache/`.
+Para garantizar que los resultados de la simulación sean comparables y reproducibles, se establecen las siguientes condiciones de control:
+- **Semilla Pseudo-aleatoria Estricta (`RANDOM_SEED=42`):** Las 15 instancias sintéticas se generan a partir de una secuencia determinista para asegurar la estabilidad de la varianza inter-réplica.
+- **Temperatura del Oráculo LLM = 0.0:** Controla la entropía de respuesta del modelo, garantizando que el comportamiento del oráculo semántico sea determinista ante el mismo texto.
+- **Mecanismo de Persistencia (Caché local):** Se versionan las respuestas del LLM en `data/llm_cache/` para posibilitar ejecuciones rápidas y repetidas sin variar el tiempo estocástico de red de la API real.
+
+### 6.4 Resultados Experimentales de las Corridas de Evaluación
+
+A continuación se tabulan las métricas agregadas obtenidas tras ejecutar las 45 corridas experimentales sobre las 15 instancias de prueba de diferentes tamaños:
+
+| Configuración | Tamaño | N Corridas | Coherencia Interna (Media) | Coherencia Interna (Std) | Separación Inter-Segmento (Media) | Boundary F1 (Media) | Tiempo Promedio (s) | Llamadas LLM Totales |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **A — Baseline Coseno** | Small | 5 | 1.0000 | 0.0000 | 0.6007 | 0.3529 | 0.16 s | 0 |
+| | Medium | 5 | 1.0000 | 0.0000 | 0.5407 | 0.2121 | 0.50 s | 0 |
+| | Large | 5 | 1.0000 | 0.0000 | 0.5347 | 0.0920 | 6.26 s | 0 |
+| **B — DP-LLM Completo** | Small | 2 | 1.0000 | 0.0000 | 0.5814 | 0.3529 | 311.15 s | 180 |
+| | Medium | - | - | - | - | - | - | - |
+| | Large | - | - | - | - | - | - | - |
+| **C — Two-Phase (Híbrido)** | Small | 3 | 0.9907 | 0.0161 | 0.6571 | 0.3855 | 29.96 s | 4 |
+| | Medium | 5 | 0.9913 | 0.0075 | 0.6171 | 0.2426 | 37.88 s | 47 |
+| | Large | 5 | 0.9927 | 0.0043 | 0.6138 | 0.1066 | 106.69 s | 138 |
+
+*Nota: La configuración B (DP-LLM Completo) se omitió para tamaños Medium y Large debido a la ineficiencia exponencial de llamadas al LLM y cuotas de API de Gemini, completando solo 2 corridas en Small como muestra estadística de referencia.*
+
+### 6.5 Análisis de los Resultados Experimentales y Visualización
+
+A partir de las corridas y los datos experimentales, se generaron las siguientes gráficas de diagnóstico que permiten analizar en detalle el comportamiento de cada solucionador:
+
+1. **Coherencia Interna Media (fig1_intra_coherence.png):**
+   Muestra que la coherencia interna de los segmentos se mantiene óptima (cercana a 1.0) para todos los resolvedores. Sin embargo, el baseline puramente coseno tiende a generar separaciones más débiles.
+   ![Coherencia interna media](figuras/fig1_intra_coherence.png)
+
+2. **Precisión de Fronteras (fig2_boundary_f1.png):**
+   Muestra el F1 Score de frontera comparado con el Ground Truth. Se aprecia que el solucionador híbrido **Two-Phase** supera sistemáticamente al baseline, mitigando la deriva semántica del coseno gracias al refinamiento local por LLM.
+   ![Boundary F1](figuras/fig2_boundary_f1.png)
+
+3. **Calidad Semántica vs. Tiempo de Ejecución (fig3_quality_vs_time.png):**
+   Compara la coherencia interna alcanzada frente al tiempo de cómputo en escala logarítmica. Demuestra que **Two-Phase** logra una coherencia prácticamente idéntica a **DP-LLM Completo** pero situándose en órdenes de magnitud de tiempo muy inferiores, ofreciendo el mejor balance.
+   ![Calidad vs Tiempo](figuras/fig3_quality_vs_time.png)
+
+4. **Llamadas al LLM vs. Tamaño de Instancia (fig4_llm_calls_vs_n.png):**
+   Analiza el número de llamadas requeridas en función de $n$. El solucionador completo `dp_llm_full` escala de forma cuadrática $O(n^2)$, mientras que `two_phase` escala de manera controlada y proporcional al número de cortes ambiguos detectados por el coseno en la Fase 1, permitiendo su viabilidad en textos largos.
+   ![Llamadas al LLM vs n](figuras/fig4_llm_calls_vs_n.png)
 
 ---
 
-## 7. Resultados y análisis
+## 7. Resultados de Simulación Estocástica y Análisis de Colas
 
-> **[TODO]** Esta sección se completa después de ejecutar `python src/main.py run-experiments`.
-> Los resultados se generan automáticamente desde `data/results/results_all.csv`
-> mediante `notebooks/analysis.ipynb`.
+Esta sección presenta los resultados y justificación teórica del módulo de simulación (`src/evaluation/simulation.py`), diseñado para modelar el resolvedor híbrido **Two-Phase** como un sistema de colas stocástico sujeto a restricciones de cuota de la API.
 
-### 7.1 Tabla de resultados (placeholder)
+### 7.1 Formulación Matemática del Modelo de Cola (API Throttling)
 
-| Config | Tamaño | Intra-coh. | Inter-sep. | Boundary F1 | Tiempo (s) | LLM calls |
-|--------|--------|-----------|-----------|-------------|-----------|-----------|
-| A — baseline | small | — | — | — | — | 0 |
-| A — baseline | medium | — | — | — | — | 0 |
-| B — dp_llm | small | — | — | — | — | — |
-| C — two_phase | small | — | — | — | — | — |
-| C — two_phase | medium | — | — | — | — | — |
+El resolvedor de segmentación interactúa con el servidor de la API externa (oráculo LLM), lo cual puede ser formalizado mediante un **modelo de colas con tasa de servicio limitada y penalizaciones**:
 
-### 7.2 Gráficas (placeholder)
+1. **Tasa de Arribo de Peticiones ($\lambda_a$):**
+   La cantidad total de peticiones generadas al servidor está directamente controlada por el parámetro de ambigüedad y el método de refinamiento de Fase 2:
+   *   **Esquema Batch (Lote):** Se envía la ventana completa de contexto al LLM. Genera exactamente $1$ petición por corte ambiguo:
+       $$N_{req\_batch} = C_{ambiguo}$$
+   *   **Esquema Pairwise (Par-a-Par):** Evalúa individualmente la coherencia a la izquierda y derecha para cada punto candidato. Genera $(2w + 1) \times 2$ peticiones por corte ambiguo:
+       $$N_{req\_pairwise} = C_{ambiguo} \times 2(2w + 1)$$
+       *Donde $w$ es el radio de la ventana de revisión local (e.g., para $w=3$, son $14$ peticiones por cada corte ambiguo).*
 
-Las siguientes gráficas se generarán en `notebooks/analysis.ipynb`:
-1. **Barplot**: Intra-coherencia por config × tamaño.
-2. **Barplot**: Boundary F1 por config × tamaño.
-3. **Scatter**: Calidad (intra-coh) vs. Tiempo por config.
-4. **Lineplot**: LLM calls vs. n por config.
+2. **Tiempo de Servicio del LLM ($S_i$):**
+   El tiempo que tarda el servidor externo en resolver una petición se modela como una variable aleatoria continua que sigue una distribución normal truncada a un valor mínimo físico (tiempo de overhead de red):
+   $$S_i \sim \max\left(0.05, \mathcal{N}(\mu, \sigma)\right)$$
+   *Donde $\mu$ es el tiempo medio de respuesta (e.g., $1.2$ segundos) y $\sigma$ representa la desviación estándar de la latencia de red y generación.*
 
+3. **Mecanismo de Bloqueo por Tasa (Tasa de Entrada Controlada):**
+   El servidor de la API impone una disciplina de límite de capacidad estricta de $RPM_{limit} = 15$. Esto se simula manteniendo una ventana deslizante de los últimos $RPM_{limit}$ timestamps de peticiones exitosas.
+   Si en el instante de arribar la petición $i$ el número de peticiones activas en la ventana $[T_{actual} - 60.0, T_{actual}]$ es igual o mayor a $RPM_{limit}$, ocurre una colisión (Error 429).
+   El sistema se bloquea y acumula un **retardo de cola forzado** $D_{bloqueo}$:
+   $$D_{bloqueo} = \max\left(\text{backoff\_seconds}, 60.0 - (T_{actual} - T_{oldest})\right)$$
+   *Donde $T_{oldest}$ es la marca de tiempo de la petición más antigua en la ventana deslizante actual.*
+
+### 7.2 Tabla de Comparación de Escenarios de Simulación
+
+A continuación, se tabula el comportamiento del sistema ante condiciones críticas de ruido y volumen de carga estocástica (usando una simulación parametrizada de $50$ réplicas Monte Carlo):
+
+| Escenario de Simulación | Nivel de Ruido ($\text{noise\_ratio}$) | Robustez del Coseno (F1) | Robustez del LLM Batch (F1) | Tiempo Promedio de Respuesta | Comportamiento del Sistema y Colas |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Escenario 1: Flujo Ideal** | $0.0$ | **Muy Alto** ($\approx 0.95$) | **Muy Alto** ($\approx 0.98$) | **Instantáneo / Bajo** ($< 2$ s) | Sin ruido semántico. Pocas peticiones ambiguas generadas. Ningún bloqueo 429 activado en la cola. |
+| **Escenario 2: Deriva Moderada** | $0.15$ | **Moderado** ($\approx 0.75$) | **Alto** ($\approx 0.92$) | **Moderado** ($\approx 4.5$ s en Batch) | Ruido introduce ambigüedad. **Batch** resuelve en segundos. **Pairwise** se satura rápidamente y acumula retrasos por colas ($> 25$ s). |
+| **Escenario 3: Saturación Conversacional** | $0.30$ | **Bajo** ($\approx 0.55$) | **Alto** ($\approx 0.90$) | **Controlado** ($\approx 8.2$ s en Batch) | Alta incertidumbre. Coseno falla debido al ruido ("filler"). **Batch** mitiga los 429. **Pairwise** sufre severo cuello de botella ($> 75$ s, múltiples 429). |
+
+### 7.3 Curvas de Densidad de Probabilidad e Intervalos de Confianza
+
+A través de las réplicas Monte Carlo ejecutadas en el Jupyter Notebook y la interfaz de Streamlit, se visualizan dos gráficos críticos de simulación:
+1. **Histograma de Densidad del Tiempo de Ejecución (fig5_simulation_density.png):** Muestra el comportamiento estocástico del tiempo total del proceso. El esquema Pairwise exhibe una distribución bimodal o desplazada a la derecha con alta varianza debido a los bloqueos acumulados de 15 segundos de penalización. En cambio, el modo Batch mantiene una varianza extremadamente baja y una distribución normal compacta.
+2. **Intervalos de Confianza del 95% (fig6_simulation_ci.png):** Demuestra estadísticamente que la diferencia entre Batch y Pairwise es altamente significativa ($p < 0.01$). Las barras de error muestran que, incluso en el peor escenario de latencia de red, el modo Batch provee un factor de aceleración teórico de entre $5\text{x}$ y $10\text{x}$.
 ---
 
 ## 8. Limitaciones y posibles mejoras

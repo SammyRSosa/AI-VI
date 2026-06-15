@@ -1,0 +1,5 @@
+{
+  "best_cut": 6,
+  "razon": "Los párrafos 4 al 6 presentan eventos históricos de gran escala, mientras que a partir del párrafo 7 el texto comienza a repetir información y pierde la coherencia cronológica y temática.",
+  "raw": "{\n  \"best_cut\": 6,\n  \"razon\": \"Los párrafos 4 al 6 presentan eventos históricos de gran escala, mientras que a partir del párrafo 7 el texto comienza a repetir información y pierde la coherencia cronológica y temática.\"\n}"
+}
